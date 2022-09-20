@@ -26,13 +26,23 @@ public class test {
         
         System.out.println("\n--------------------------------------------------\n");
         UnidadDeAprendizaje ua = new UnidadDeAprendizaje(1, "Desarrollo de Software", 3, 3, 0);
-        altaUA(ua);
+        //altaUA(ua);
         
         System.out.println("\n--------------------------------------------------\n");
         ArrayList<UnidadDeAprendizaje> listaUAs = new ArrayList<UnidadDeAprendizaje>();
         listaUAs.add(ua);
         Profesor profe = new Profesor(1, "María Angélica", "Astorga Vargas", "RFCTEST123456", listaUAs);
-        altaProfesor(profe);
+        //altaProfesor(profe);
+        
+        /*System.out.println("\n--------------------------------------------------\n");
+        profe.setNombre("Angelical");
+        profe.setRfc("RFCMODIFICADO");
+        modificarProfesor(profeModificar);*/
+        
+        /*System.out.println("\n--------------------------------------------------\n");
+        ua.setHorasLaboratorio(1);
+        ua.setNombreUA("Software Development");
+        modificarUA(ua);*/
         
         //bajaProfesor(1);
         //bajaUA(1);
@@ -162,6 +172,16 @@ public class test {
     public static void bajaUA(UnidadDeAprendizaje uaEliminar) {
         UnidadDeAprendizajeDAO uaDAO = new UnidadDeAprendizajeDAO();
         uaDAO.delete(uaEliminar);
+    }
+    
+    public static void modificarProfesor(Profesor profe) {
+        ProfesorDAO profesorDAO = new ProfesorDAO();
+        profesorDAO.update(profe);
+    }
+    
+    public static void modificarUA(UnidadDeAprendizaje ua) {
+        UnidadDeAprendizajeDAO uaDAO = new UnidadDeAprendizajeDAO();
+        uaDAO.update(ua);
     }
     
 }
