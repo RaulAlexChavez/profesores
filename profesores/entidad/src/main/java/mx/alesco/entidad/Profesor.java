@@ -58,6 +58,14 @@ public class Profesor implements Serializable {
     public Profesor(Integer idprofesor) {
         this.idprofesor = idprofesor;
     }
+    
+    public Profesor(int id, String nombre, String apellido, String rfc, List<UnidadDeAprendizaje> unidadDeAprendizajeList) {
+        this.idprofesor = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rfc = rfc;
+        this.unidadDeAprendizajeList = unidadDeAprendizajeList;
+    }
 
     public Integer getIdprofesor() {
         return idprofesor;

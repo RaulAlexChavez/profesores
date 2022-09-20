@@ -57,6 +57,14 @@ public class UnidadDeAprendizaje implements Serializable {
         this.idunidadDeAprendizaje = idunidadDeAprendizaje;
     }
 
+    public UnidadDeAprendizaje(Integer idunidadDeAprendizaje, String nombreUA, Integer horasClase, Integer horasTaller, Integer horasLaboratorio) {
+        this.idunidadDeAprendizaje = idunidadDeAprendizaje;
+        this.nombreUA = nombreUA;
+        this.horasClase = horasClase;
+        this.horasTaller = horasTaller;
+        this.horasLaboratorio = horasLaboratorio;
+    }
+
     public Integer getIdunidadDeAprendizaje() {
         return idunidadDeAprendizaje;
     }
