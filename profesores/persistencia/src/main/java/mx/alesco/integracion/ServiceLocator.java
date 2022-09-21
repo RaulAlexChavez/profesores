@@ -20,7 +20,7 @@ public class ServiceLocator {
     /**
      * se crea la instancia para profesor DAO si esta no existe
      */
-    public static ProfesorDAO getInstanceAlumnoDAO(){
+    public static ProfesorDAO getInstanceProfesor(){
         if(profesorDAO == null){
             profesorDAO = new ProfesorDAO();
             return profesorDAO;
@@ -31,7 +31,7 @@ public class ServiceLocator {
     /**
      * se crea la instancia de unidadDeAprendizajeDAO si esta no existe
      */
-    public static UnidadDeAprendizajeDAO getInstanceUsuarioDAO(){
+    public static UnidadDeAprendizajeDAO getInstanceUnidadDeAprendizaje(){
         if(unidadDeAprendizajeDAO == null){
             unidadDeAprendizajeDAO = new UnidadDeAprendizajeDAO();
             return unidadDeAprendizajeDAO;
