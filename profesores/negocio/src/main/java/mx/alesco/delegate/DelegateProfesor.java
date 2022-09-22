@@ -15,14 +15,25 @@ import mx.alesco.integracion.ServiceLocator;
 public class DelegateProfesor {
     
     /**
-     * Metodo de ejemplo para guardar Profesor
-     * @param profe de tipo Profesor con id 0 para que se cree un id nuevo.
+     * DELEGATE<br>
+     * Guarda un nuevo Profesor. No hay validación en caso de que ya exista un objeto con el mismo ID.
+     * @param profe El objeto Profesor a guardar.
      */
     public static void saveProfesor(Profesor profe){
         ServiceLocator.getInstanceProfesorDAO().save(profe);
     }
 
+    /**
+     * DELEGATE<br>
+     * Clase para agrupar consultas de profesor.
+     */
     public static class ConsultaProfesor {
+        /**
+         * FACADE<br>
+         * Busca un profesor por id y lo devuelve.
+         * @param id El idProfesor que se busca.
+         * @return El profesor que coincida con ese ID.
+         */
         public static Profesor porID(int id) {
             return ServiceLocator.getInstanceProfesorDAO().find(id);
         }
