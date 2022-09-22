@@ -20,7 +20,7 @@ import mx.alesco.entidad.UnidadDeAprendizaje;
 public class test {
     public static void main(String[] args) {
         System.out.println("----- PERSISTENCIA ------");
-        System.out.println("\n--------------------------------------------------\n");
+        /*System.out.println("\n--------------------------------------------------\n");
         consultaProfesores();
         System.out.println("\n--------------------------------------------------\n");
         consultaUnidadesDeAprendizaje();
@@ -33,7 +33,7 @@ public class test {
         ArrayList<UnidadDeAprendizaje> listaUAs = new ArrayList<UnidadDeAprendizaje>();
         listaUAs.add(ua);
         Profesor profe = new Profesor(1, "María Angélica", "Astorga Vargas", "RFCTEST123456", listaUAs);
-        //altaProfesor(profe);
+        //altaProfesor(profe);*/
         
         /*System.out.println("\n--------------------------------------------------\n");
         profe.setNombre("Angelical");
@@ -45,18 +45,20 @@ public class test {
         ua.setNombreUA("Software Development");
         modificarUA(ua);*/
         
-        try {
+        /*try {
             bajaProfesor(20);
         } catch (java.lang.IllegalArgumentException ex){
             ex.printStackTrace();
             System.out.println("No existe un profesor con esa ID.");
-        }
+        }*/
         //bajaUA(1);
         
-        System.out.println("\n--------------------------------------------------\n");
+        /*System.out.println("\n--------------------------------------------------\n");
         consultaProfesores();
         System.out.println("\n--------------------------------------------------\n");
-        consultaUnidadesDeAprendizaje();
+        consultaUnidadesDeAprendizaje();*/
+        
+        consultaProfesoresConUA();
     }
     
     public static void consultaProfesores() {
@@ -73,6 +75,30 @@ public class test {
             System.out.println("Apellido: " + profe.getApellido());
             System.out.println("RFC: " + profe.getRfc());
             System.out.println("Cantidad de materias que imparte: " + profe.getUnidadDeAprendizajeList().size());
+            System.out.println();
+        }
+        if(noProfes) {
+            System.out.println("No hay profesores registrados.");
+        }
+    }
+    
+    public static void consultaProfesoresConUA() {
+        List<Profesor> listaProfesores = new ArrayList();
+        ProfesorDAO profesorDAO = new ProfesorDAO();
+        listaProfesores = profesorDAO.findAll();
+        
+        System.out.println("Consulta Profesores:\n");
+        boolean noProfes = true;
+        for(Profesor profe : listaProfesores) {
+            noProfes = false;
+            System.out.println("ID Profesor: " + profe.getIdprofesor());
+            System.out.println("Nombre: " + profe.getNombre());
+            System.out.println("Apellido: " + profe.getApellido());
+            System.out.println("RFC: " + profe.getRfc());
+            System.out.println("Cantidad de materias que imparte: " + profe.getUnidadDeAprendizajeList().size());
+            for(UnidadDeAprendizaje ua : profe.getUnidadDeAprendizajeList()) {
+                System.out.println(ua.getNombreUA());
+            }
             System.out.println();
         }
         if(noProfes) {
