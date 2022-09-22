@@ -45,7 +45,12 @@ public class test {
         ua.setNombreUA("Software Development");
         modificarUA(ua);*/
         
-        //bajaProfesor(1);
+        try {
+            bajaProfesor(20);
+        } catch (java.lang.IllegalArgumentException ex){
+            ex.printStackTrace();
+            System.out.println("No existe un profesor con esa ID.");
+        }
         //bajaUA(1);
         
         System.out.println("\n--------------------------------------------------\n");

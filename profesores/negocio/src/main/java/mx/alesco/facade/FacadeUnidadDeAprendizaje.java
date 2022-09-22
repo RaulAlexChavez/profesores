@@ -14,18 +14,20 @@ import mx.alesco.entidad.UnidadDeAprendizaje;
  */
 public class FacadeUnidadDeAprendizaje {
     
-    private final DelegateUnidadDeAprendizaje delegateUnidadDeAprendizaje;
-
-    public FacadeUnidadDeAprendizaje() {
-        this.delegateUnidadDeAprendizaje = new DelegateUnidadDeAprendizaje();
-    }
+    public final ConsultaUnidadDeAprendizaje consultaUA = new ConsultaUnidadDeAprendizaje();
     
     /**
      * Metodo de ejemplo para guardar Usuario
      * @param ua de tipo usuario con id 0 para poder que se cree un id nuevo
      */
     public void saveUnidadDeAprendizaje(UnidadDeAprendizaje ua){
-        delegateUnidadDeAprendizaje.saveUnidadDeAprendizaje(ua);
+        DelegateUnidadDeAprendizaje.saveUnidadDeAprendizaje(ua);
+    }
+    
+    public class ConsultaUnidadDeAprendizaje {
+        public UnidadDeAprendizaje porID(int id) {
+            return DelegateUnidadDeAprendizaje.ConsultaUA.porID(id);
+        }
     }
     
 }

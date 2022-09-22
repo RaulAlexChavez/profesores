@@ -14,18 +14,24 @@ import mx.alesco.entidad.Profesor;
  */
 public class FacadeProfesor {
     
-    private final DelegateProfesor delegateProfesor;
-
-    public FacadeProfesor() {
-        this.delegateProfesor = new DelegateProfesor();
-    }
+    public final ConsultaProfesor consultaProfesor = new ConsultaProfesor();
     
     public void guardarProfesor(Profesor profe){
-        delegateProfesor.saveProfesor(profe);
+        DelegateProfesor.saveProfesor(profe);
     }
     
-    public Profesor consultarProfesor(Profesor profe) {
-        return delegateProfesor.consultarProfesor(profe);
+    /**
+     * Clase que agrupa los métodos de consulta de profesores.
+     */
+    public class ConsultaProfesor{
+        /**
+         * Busca un profesor por id y lo devuelve.
+         * @param id El idProfesor que se busca.
+         * @return El profesor que coincida con ese ID.
+         */
+        public Profesor porID(int id) {
+            return DelegateProfesor.ConsultaProfesor.porID(id);
+        } 
     }
     
 }

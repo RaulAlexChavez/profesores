@@ -19,8 +19,14 @@ public class DelegateUnidadDeAprendizaje {
      * Metodo de ejemplo para guardar UnidadDeAprendizaje
      * @param ua de tipo UnidadDeAprendizaje con id 0 para poder que se cree un id nuevo
      */
-    public void saveUnidadDeAprendizaje(UnidadDeAprendizaje ua){
-        ServiceLocator.getInstanceUnidadDeAprendizaje().save(ua);
+    public static void saveUnidadDeAprendizaje(UnidadDeAprendizaje ua){
+        ServiceLocator.getInstanceUnidadDeAprendizajeDAO().save(ua);
+    }
+    
+    public static class ConsultaUA {
+        public static UnidadDeAprendizaje porID(int id_ua) {
+            return ServiceLocator.getInstanceUnidadDeAprendizajeDAO().find(id_ua);
+        }
     }
     
 }
