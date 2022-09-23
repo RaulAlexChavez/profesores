@@ -5,6 +5,7 @@
  */
 package mx.alesco.DAO;
 
+import java.util.List;
 import mx.alesco.entidad.UnidadDeAprendizaje;
 import mx.alesco.persistencia.AbstractDAO;
 
@@ -14,4 +15,14 @@ import mx.alesco.persistencia.AbstractDAO;
  */
 public class UnidadDeAprendizajeDAO extends AbstractDAO<Integer, UnidadDeAprendizaje>{
     
+    public boolean unidadDeAprendizajeAlreadyExistsWithID(int id) {
+        List<UnidadDeAprendizaje> listUA = findAll();
+        for(UnidadDeAprendizaje ua : listUA) {
+            if(ua.getIdunidadDeAprendizaje() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+            
 }

@@ -7,6 +7,7 @@ package mx.alesco.delegate;
 
 import java.util.List;
 import mx.alesco.entidad.UnidadDeAprendizaje;
+import mx.alesco.DAO.UnidadDeAprendizajeDAO;
 import mx.alesco.integracion.ServiceLocator;
 
 /**
@@ -16,12 +17,20 @@ import mx.alesco.integracion.ServiceLocator;
 public class DelegateUnidadDeAprendizaje {
     
     /**
-     * DELEGATE<br>
-     * Guarda una nueva Unidad de Aprendizaje. No hay validación en caso de que ya exista un objeto con el mismo ID.
+     * DELEGATE
+     * Guarda una nueva Unidad de Aprendizaje si no existe una ya con el mismo ID.
      * @param ua El objeto UnidadDeAprendizaje a guardar.
+     * @return true si la alta fue exitosa. false si ya existía una UA con esa ID.
      */
-    public static void saveUnidadDeAprendizaje(UnidadDeAprendizaje ua){
-        ServiceLocator.getInstanceUnidadDeAprendizajeDAO().save(ua);
+    public static boolean altaUnidadDeAprendizaje(UnidadDeAprendizaje ua){
+        UnidadDeAprendizajeDAO uaDAO = ServiceLocator.getInstanceUnidadDeAprendizajeDAO();
+        if(uaDAO.unidadDeAprendizajeAlreadyExistsWithID(ua.getIdunidadDeAprendizaje())) {
+            return false;
+        }
+        else{
+            uaDAO.save(ua);
+            return true;
+        }
     }
     
     /**
@@ -29,7 +38,7 @@ public class DelegateUnidadDeAprendizaje {
      * Borra una Unidad De Aprendizaje. No hay validación en caso de que no exista lo que se quiere borrar.
      * @param ua El objeto UnidadDeAprendizaje a borrar.
      */
-    public static void deleteUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
+    public static void borrarUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
         ServiceLocator.getInstanceUnidadDeAprendizajeDAO().delete(ua);
     }
     

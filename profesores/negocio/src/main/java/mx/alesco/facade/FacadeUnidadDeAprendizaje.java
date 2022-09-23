@@ -25,8 +25,8 @@ public class FacadeUnidadDeAprendizaje {
      * Guarda una nueva Unidad de Aprendizaje. No hay validación en caso de que ya exista un objeto con el mismo ID.
      * @param ua El objeto UnidadDeAprendizaje a guardar.
      */
-    public void saveUnidadDeAprendizaje(UnidadDeAprendizaje ua){
-        DelegateUnidadDeAprendizaje.saveUnidadDeAprendizaje(ua);
+    public boolean altaUnidadDeAprendizaje(UnidadDeAprendizaje ua){
+        return DelegateUnidadDeAprendizaje.altaUnidadDeAprendizaje(ua);
     }
     
     /**
@@ -35,7 +35,7 @@ public class FacadeUnidadDeAprendizaje {
      * @param ua El objeto UnidadDeAprendizaje a borrar.
      */
     public void deleteUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
-        DelegateUnidadDeAprendizaje.deleteUnidadDeAprendizaje(ua);
+        DelegateUnidadDeAprendizaje.borrarUnidadDeAprendizaje(ua);
     }
     
     /**

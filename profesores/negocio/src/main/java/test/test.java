@@ -11,13 +11,19 @@ import mx.alesco.integracion.ServiceFacadeLocator;
 
 /**
  *
- * @author lukki
+ * @author RaúL Alex Chávez
  */
 public class test {
     public static void main(String[] args) {
         
         System.out.println("----- NEGOCIO ------");
         
+        consultaUA(11293);
+        altaUA();
+        consultaUA(11293);
+    }
+    
+    public static void consultaProfesor() {
         Profesor profe = null;
         // El try catch no funciona, no cacha excepciones
         try {
@@ -37,8 +43,14 @@ public class test {
         else {
             System.out.println("Profe no encontrado.");
         }
-        
-        UnidadDeAprendizaje ua = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.porID(1);
+    }
+    
+    public static void consultaUA(int id) {
+        UnidadDeAprendizaje ua = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.porID(id);
+        if(ua ==  null) {
+            System.out.println("No se ha encontrado una UA con ese id.");
+            return;
+        }
         
         System.out.println("ID UA: " + ua.getIdunidadDeAprendizaje());
         System.out.println("Nombre UA: " + ua.getNombreUA());
@@ -48,5 +60,15 @@ public class test {
 
         System.out.println("Cantidad de profesores que imparten la UA: " + ua.getProfesorList().size());
         System.out.println();
+    }
+
+    public static void altaUA() {
+        UnidadDeAprendizaje ua =  new UnidadDeAprendizaje(11293, "Taller de Linux", 0, 4, 0);
+        if(ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua)) {
+            System.out.println("Alta exitosa!");
+        }
+        else {
+            System.out.println("Alta fallida :c");
+        }
     }
 }
