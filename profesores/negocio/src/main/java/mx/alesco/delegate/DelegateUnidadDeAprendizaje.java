@@ -8,6 +8,7 @@ package mx.alesco.delegate;
 import java.util.List;
 import mx.alesco.entidad.UnidadDeAprendizaje;
 import mx.alesco.DAO.UnidadDeAprendizajeDAO;
+import mx.alesco.entidad.Profesor;
 import mx.alesco.integracion.ServiceLocator;
 
 /**
@@ -55,6 +56,15 @@ public class DelegateUnidadDeAprendizaje {
          */
         public static UnidadDeAprendizaje porID(int id_ua) {
             return ServiceLocator.getInstanceUnidadDeAprendizajeDAO().find(id_ua);
+        }
+        
+        /**
+         * DELEGATE<br>
+         * Regresa una lista con todas las UAs registrados en la BD.
+         * @return Una lista de todos los registros de UAs de la tabla en la BD.
+         */
+        public static List<UnidadDeAprendizaje> todos() {
+            return ServiceLocator.getInstanceUnidadDeAprendizajeDAO().findAll();
         }
     }
     

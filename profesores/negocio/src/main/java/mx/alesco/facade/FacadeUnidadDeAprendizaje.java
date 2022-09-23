@@ -5,6 +5,7 @@
  */
 package mx.alesco.facade;
 
+import java.util.List;
 import mx.alesco.delegate.DelegateUnidadDeAprendizaje;
 import mx.alesco.entidad.UnidadDeAprendizaje;
 
@@ -51,6 +52,15 @@ public class FacadeUnidadDeAprendizaje {
          */
         public UnidadDeAprendizaje porID(int id) {
             return DelegateUnidadDeAprendizaje.ConsultaUA.porID(id);
+        }
+        
+        /**
+         * FACADE<br>
+         * Regresa una lista con todas las UAs registrados en la BD.
+         * @return Una lista de todos los registros de UAs de la tabla en la BD.
+         */
+        public List<UnidadDeAprendizaje> todos() {
+            return DelegateUnidadDeAprendizaje.ConsultaUA.todos();
         }
     }
     
