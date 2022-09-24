@@ -32,11 +32,24 @@ public class FacadeUnidadDeAprendizaje {
     
     /**
      * FACADE<br>
-     * Borra una Unidad De Aprendizaje. No hay validación en caso de que no exista lo que se quiere borrar.
+     * Borra una Unidad De Aprendizaje y regresa true si la operación fue exitosa.
      * @param ua El objeto UnidadDeAprendizaje a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
      */
-    public void deleteUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
-        DelegateUnidadDeAprendizaje.borrarUnidadDeAprendizaje(ua);
+    public boolean borrarUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
+        return DelegateUnidadDeAprendizaje.borrarUnidadDeAprendizaje(ua);
+    }
+    
+    /**
+     * FACADE<br>
+     * Borra una Unidad De Aprendizaje por ID y regresa true si la operación fue exitosa.
+     * @param id El id del registro a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
+     */
+    public boolean borrarUnidadDeAprendizaje(int id) {
+        UnidadDeAprendizaje ua = new UnidadDeAprendizaje();
+        ua.setIdunidadDeAprendizaje(id);
+        return borrarUnidadDeAprendizaje(ua);
     }
     
     /**

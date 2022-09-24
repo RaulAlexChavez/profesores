@@ -19,7 +19,7 @@ public class DelegateProfesor {
     /**
      * DELEGATE
      * Guarda un nuevo Profesor si no existe uno ya con el mismo ID.
-     * @param ua El objeto Profesor a guardar.
+     * @param profe El objeto Profesor a guardar.
      * @return true si la alta fue exitosa. false si ya existía un Profesor con esa ID.
      */
     public static boolean altaProfesor(Profesor profe){
@@ -30,6 +30,40 @@ public class DelegateProfesor {
         else{
             profeDAO.save(profe);
             return true;
+        }
+    }
+    
+    /**
+     * DELEGATE
+     * Actualiza un Profesor si es que existe en la BD.
+     * @param profe El objeto Profesor a actualizar.
+     * @return true si la alta fue exitosa. false si ya existía un Profesor con esa ID.
+     */
+    public static boolean actualizarProfesor(Profesor profe){
+        ProfesorDAO profeDAO = ServiceLocator.getInstanceProfesorDAO();
+        if(profeDAO.profesorAlreadyExistsWithID(profe.getIdprofesor())) {
+            profeDAO.update(profe);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    /**
+     * DELEGATE<br>
+     * Borra un Profesor y regresa true si la operación fue exitosa.
+     * @param profe El objeto Profesor a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
+     */
+    public static boolean borrarProfesor(Profesor profe) {
+        ProfesorDAO profeDAO = ServiceLocator.getInstanceProfesorDAO();
+        if(profeDAO.profesorAlreadyExistsWithID(profe.getIdprofesor())) {
+            profeDAO.delete(profe);
+            return true;
+        }
+        else{
+            return false;
         }
     }
 

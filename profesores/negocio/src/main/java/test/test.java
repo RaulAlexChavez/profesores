@@ -5,7 +5,6 @@
  */
 package test;
 
-import java.util.ArrayList;
 import java.util.List;
 import mx.alesco.entidad.Profesor;
 import mx.alesco.entidad.UnidadDeAprendizaje;
@@ -20,16 +19,30 @@ public class test {
         
         System.out.println("----- NEGOCIO ------");
         
+        // ALTA UA //
         /*consultaUA(11293);
         altaUA();
         consultaUA(11293);*/
         
+        // ALTA PROFESOR //
         /*consultaProfesor(9898);
         altaProfesor();
         consultaProfesor(9898);*/
         
+        // CONSULTA PROFES Y UAS //
         consultaProfesores();
         consultaUAs();
+        
+        // BORRAR PROFESOR //
+        /*altaProfesor();
+        consultaProfesor(9898);
+        borrarProfesor(9898);
+        consultaProfesor(9898);*/
+        
+        // MODIFCIAR PROFESOR //
+        /*consultaProfesor(9898);
+        modificarProfesor();
+        consultaProfesor(9898);*/
     }
     
     public static void consultaProfesor(int id) {
@@ -138,6 +151,27 @@ public class test {
         }
         else {
             System.out.println("Alta de Profesor fallida! :C");
+        }
+    }
+    
+    public static void borrarProfesor(int id) {
+        if(ServiceFacadeLocator.getInstanceFacadeProfesor().borrarProfesor(9898)) {
+            System.out.println("Registro de profesor eliminado con éxito!");
+        }
+        else {
+            System.out.println("No se encontró el ID del registro de profesor a borrar.");
+        }
+    }
+    
+    public static void modificarProfesor(){
+        UnidadDeAprendizaje ua = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.porID(11293);
+        
+        Profesor profe = new Profesor(9898, "Edwin R. Modificado", "García Curiel jsjs", "ERGC123456789", ua);
+        if(ServiceFacadeLocator.getInstanceFacadeProfesor().actualizarProfesor(profe)) {
+            System.out.println("Modificación de Profesor exitosa!");
+        }
+        else {
+            System.out.println("Modificación de Profesor fallida! :C");
         }
     }
     

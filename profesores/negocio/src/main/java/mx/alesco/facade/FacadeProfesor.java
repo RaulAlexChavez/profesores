@@ -23,11 +23,44 @@ public class FacadeProfesor {
     
     /**
      * FACADE<br>
-     * Guarda una nueva Unidad de Aprendizaje. No hay validación en caso de que ya exista un objeto con el mismo ID.
-     * @param profe El objeto UnidadDeAprendizaje a guardar.
+     * Guarda un nuevo Profesor si no existe uno ya con esa ID.
+     * @param profe El objeto Profesor a actualizar.
+     * @return true si la alta fue exitosa. false si ya existía un Profesor con esa ID.
      */
     public boolean altaProfesor(Profesor profe){
         return DelegateProfesor.altaProfesor(profe);
+    }
+    
+    /**
+     * FACADE<br>
+     * Actualiza un Profesor si es que existe en la BD.
+     * @param profe El objeto Profesor a actualizar.
+     * @return true si la alta fue exitosa. false si ya existía un Profesor con esa ID.
+     */
+    public boolean actualizarProfesor(Profesor profe){
+        return DelegateProfesor.actualizarProfesor(profe);
+    }
+    
+    /**
+     * FACADE<br>
+     * Borra un Profesor y regresa true si la operación fue exitosa.
+     * @param profe El objeto Profesor a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
+     */
+    public boolean borrarProfesor(Profesor profe) {
+        return DelegateProfesor.borrarProfesor(profe);
+    }
+    
+    /**
+     * FACADE<br>
+     * Borra un Profesor por ID y regresa true si la operación fue exitosa.
+     * @param id El id del registro a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
+     */
+    public boolean borrarProfesor(int id) {
+        Profesor profe = new Profesor();
+        profe.setIdprofesor(id);
+        return borrarProfesor(profe);
     }
     
     /**

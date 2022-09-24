@@ -46,7 +46,7 @@ public class test {
         modificarUA(ua);*/
         
         /*try {
-            bajaProfesor(20);
+            borrarProfesor(20);
         } catch (java.lang.IllegalArgumentException ex){
             ex.printStackTrace();
             System.out.println("No existe un profesor con esa ID.");
@@ -186,7 +186,7 @@ public class test {
         return null;
     }
     
-    public static void bajaProfesor(int id) {
+    public static void borrarProfesor(int id) {
         Profesor profeEliminar = getProfesorConID(id);
         bajaProfesor(profeEliminar);
     }

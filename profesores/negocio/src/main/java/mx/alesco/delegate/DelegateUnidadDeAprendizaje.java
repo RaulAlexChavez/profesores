@@ -36,11 +36,19 @@ public class DelegateUnidadDeAprendizaje {
     
     /**
      * DELEGATE<br>
-     * Borra una Unidad De Aprendizaje. No hay validación en caso de que no exista lo que se quiere borrar.
+     * Borra una Unidad De Aprendizaje y regresa true si la operación fue exitosa.
      * @param ua El objeto UnidadDeAprendizaje a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
      */
-    public static void borrarUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
-        ServiceLocator.getInstanceUnidadDeAprendizajeDAO().delete(ua);
+    public static boolean borrarUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
+        UnidadDeAprendizajeDAO uaDAO = ServiceLocator.getInstanceUnidadDeAprendizajeDAO();
+        if(uaDAO.unidadDeAprendizajeAlreadyExistsWithID(ua.getIdunidadDeAprendizaje())) {
+            uaDAO.delete(ua);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     /**
