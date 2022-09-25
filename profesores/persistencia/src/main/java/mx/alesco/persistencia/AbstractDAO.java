@@ -62,6 +62,11 @@ public abstract class AbstractDAO<PK extends Serializable, T> implements Interfa
         }
     }
 
+    /**
+     * Da de alta un registro con los datos del objeto.
+     * Da error si el ID está repetido.
+     * @param obj El objeto a guardar como registro.
+     */
     @Override
     public void save(T obj) {
         System.out.println("Save ----------");
@@ -77,7 +82,11 @@ public abstract class AbstractDAO<PK extends Serializable, T> implements Interfa
         }
     }
 
-     @Override
+    /**
+     * Actualiza un registro. (How?)
+     * @param obj El objeto que representa el registro a actualizar.
+     */
+    @Override
     public void update(T obj) {
         System.out.println("update ----------");
         try {
@@ -92,6 +101,10 @@ public abstract class AbstractDAO<PK extends Serializable, T> implements Interfa
         }
     }
     
+    /**
+     * Borra un registro que coincida con el ID de un objeto.
+     * @param obj Un objeto cuyo ID es el registro que se quiere eliminar.
+     */
     @Override
     public void delete(T obj) {
         System.out.println("Delete ----------");
@@ -108,6 +121,11 @@ public abstract class AbstractDAO<PK extends Serializable, T> implements Interfa
         }
     }
 
+    /**
+     * Busca un registro por ID y regresa un objeto si se encuentra.
+     * @param id El id a buscar.
+     * @return El objeto del registro encontrado por el ID.
+     */
     @Override
     public T find(Integer id) {
         System.out.println("Find ----------");
@@ -131,6 +149,10 @@ public abstract class AbstractDAO<PK extends Serializable, T> implements Interfa
 
     }
 
+    /**
+     * Regresa una lista con todos los registros del tipo de objeto en cuestión.
+     * @return Una lista de todos los registros de la tabla.
+     */
     @Override
     public List<T> findAll() {
         System.out.println("FindAll ----------");

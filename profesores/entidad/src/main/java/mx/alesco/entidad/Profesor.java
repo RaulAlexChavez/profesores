@@ -6,6 +6,7 @@
 package mx.alesco.entidad;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -64,6 +65,16 @@ public class Profesor implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.rfc = rfc;
+        this.unidadDeAprendizajeList = unidadDeAprendizajeList;
+    }
+    
+    public Profesor(int id, String nombre, String apellido, String rfc, UnidadDeAprendizaje unidadDeAprendizaje) {
+        this.idprofesor = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rfc = rfc;
+        ArrayList<UnidadDeAprendizaje> unidadDeAprendizajeList = new ArrayList();
+        unidadDeAprendizajeList.add(unidadDeAprendizaje);
         this.unidadDeAprendizajeList = unidadDeAprendizajeList;
     }
 

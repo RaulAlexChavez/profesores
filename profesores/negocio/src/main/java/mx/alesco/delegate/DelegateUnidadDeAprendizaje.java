@@ -7,6 +7,8 @@ package mx.alesco.delegate;
 
 import java.util.List;
 import mx.alesco.entidad.UnidadDeAprendizaje;
+import mx.alesco.DAO.UnidadDeAprendizajeDAO;
+import mx.alesco.entidad.Profesor;
 import mx.alesco.integracion.ServiceLocator;
 
 /**
@@ -16,21 +18,37 @@ import mx.alesco.integracion.ServiceLocator;
 public class DelegateUnidadDeAprendizaje {
     
     /**
-     * DELEGATE<br>
-     * Guarda una nueva Unidad de Aprendizaje. No hay validación en caso de que ya exista un objeto con el mismo ID.
+     * DELEGATE
+     * Guarda una nueva Unidad de Aprendizaje si no existe una ya con el mismo ID.
      * @param ua El objeto UnidadDeAprendizaje a guardar.
+     * @return true si la alta fue exitosa. false si ya existía una UA con esa ID.
      */
-    public static void saveUnidadDeAprendizaje(UnidadDeAprendizaje ua){
-        ServiceLocator.getInstanceUnidadDeAprendizajeDAO().save(ua);
+    public static boolean altaUnidadDeAprendizaje(UnidadDeAprendizaje ua){
+        UnidadDeAprendizajeDAO uaDAO = ServiceLocator.getInstanceUnidadDeAprendizajeDAO();
+        if(uaDAO.unidadDeAprendizajeAlreadyExistsWithID(ua.getIdunidadDeAprendizaje())) {
+            return false;
+        }
+        else{
+            uaDAO.save(ua);
+            return true;
+        }
     }
     
     /**
      * DELEGATE<br>
-     * Borra una Unidad De Aprendizaje. No hay validación en caso de que no exista lo que se quiere borrar.
+     * Borra una Unidad De Aprendizaje y regresa true si la operación fue exitosa.
      * @param ua El objeto UnidadDeAprendizaje a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
      */
-    public static void deleteUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
-        ServiceLocator.getInstanceUnidadDeAprendizajeDAO().delete(ua);
+    public static boolean borrarUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
+        UnidadDeAprendizajeDAO uaDAO = ServiceLocator.getInstanceUnidadDeAprendizajeDAO();
+        if(uaDAO.unidadDeAprendizajeAlreadyExistsWithID(ua.getIdunidadDeAprendizaje())) {
+            uaDAO.delete(ua);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     /**
@@ -46,6 +64,15 @@ public class DelegateUnidadDeAprendizaje {
          */
         public static UnidadDeAprendizaje porID(int id_ua) {
             return ServiceLocator.getInstanceUnidadDeAprendizajeDAO().find(id_ua);
+        }
+        
+        /**
+         * DELEGATE<br>
+         * Regresa una lista con todas las UAs registrados en la BD.
+         * @return Una lista de todos los registros de UAs de la tabla en la BD.
+         */
+        public static List<UnidadDeAprendizaje> todos() {
+            return ServiceLocator.getInstanceUnidadDeAprendizajeDAO().findAll();
         }
     }
     

@@ -36,7 +36,7 @@ public class AltasBeanUI implements Serializable{
     public void init(){
         profesor = new Profesor();
     }
-
+/*
     public void alta() throws IOException{
         String appURL = "/altasProfesores.xhtml";
         // los atributos de usuario vienen del xhtml 
@@ -51,7 +51,7 @@ public class AltasBeanUI implements Serializable{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario o contraseña incorrecta:", "Intente de nuevo"));          
         }
     }
-
+*/
     
     /* getters y setters*/
 

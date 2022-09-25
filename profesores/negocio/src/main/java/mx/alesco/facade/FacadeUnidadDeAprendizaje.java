@@ -5,6 +5,7 @@
  */
 package mx.alesco.facade;
 
+import java.util.List;
 import mx.alesco.delegate.DelegateUnidadDeAprendizaje;
 import mx.alesco.entidad.UnidadDeAprendizaje;
 
@@ -25,17 +26,30 @@ public class FacadeUnidadDeAprendizaje {
      * Guarda una nueva Unidad de Aprendizaje. No hay validación en caso de que ya exista un objeto con el mismo ID.
      * @param ua El objeto UnidadDeAprendizaje a guardar.
      */
-    public void saveUnidadDeAprendizaje(UnidadDeAprendizaje ua){
-        DelegateUnidadDeAprendizaje.saveUnidadDeAprendizaje(ua);
+    public boolean altaUnidadDeAprendizaje(UnidadDeAprendizaje ua){
+        return DelegateUnidadDeAprendizaje.altaUnidadDeAprendizaje(ua);
     }
     
     /**
      * FACADE<br>
-     * Borra una Unidad De Aprendizaje. No hay validación en caso de que no exista lo que se quiere borrar.
+     * Borra una Unidad De Aprendizaje y regresa true si la operación fue exitosa.
      * @param ua El objeto UnidadDeAprendizaje a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
      */
-    public void deleteUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
-        DelegateUnidadDeAprendizaje.deleteUnidadDeAprendizaje(ua);
+    public boolean borrarUnidadDeAprendizaje(UnidadDeAprendizaje ua) {
+        return DelegateUnidadDeAprendizaje.borrarUnidadDeAprendizaje(ua);
+    }
+    
+    /**
+     * FACADE<br>
+     * Borra una Unidad De Aprendizaje por ID y regresa true si la operación fue exitosa.
+     * @param id El id del registro a borrar.
+     * @return true si la operación fue exitosa. false si no existe la id a borrar.
+     */
+    public boolean borrarUnidadDeAprendizaje(int id) {
+        UnidadDeAprendizaje ua = new UnidadDeAprendizaje();
+        ua.setIdunidadDeAprendizaje(id);
+        return borrarUnidadDeAprendizaje(ua);
     }
     
     /**
@@ -51,6 +65,15 @@ public class FacadeUnidadDeAprendizaje {
          */
         public UnidadDeAprendizaje porID(int id) {
             return DelegateUnidadDeAprendizaje.ConsultaUA.porID(id);
+        }
+        
+        /**
+         * FACADE<br>
+         * Regresa una lista con todas las UAs registrados en la BD.
+         * @return Una lista de todos los registros de UAs de la tabla en la BD.
+         */
+        public List<UnidadDeAprendizaje> todos() {
+            return DelegateUnidadDeAprendizaje.ConsultaUA.todos();
         }
     }
     
