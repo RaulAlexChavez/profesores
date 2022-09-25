@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Altas de profesores</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .menuitem{
+                margin-left: 30px
+            }
+            .ui-icon-home{
+                font-size: 32px;
+            }
+        </style>
+    </h:head>
+    <h:body style="background-color: green">
+        <p:megaMenu>
+            <p:menuitem url="index.xhtml" style="font-size: 32px" icon="ui-icon-home"/>
+            <p:menuitem value="Alta de profesores" url="altasProfesores.xhtml"/>
+            <p:menuitem value="Consulta general de profesores" url="consultaProfesores.xhtml"/>
+            <p:menuitem value="Alta de Unidad de Aprendizaje" url="altasUA.xhtml"/>
+            <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
+        </p:megaMenu>
+        <div>
+            <p:dataTable var="car" value="#{carBean.cars}">
+                <f:facet name="header">
+                List of Cars
+                </f:facet>
+                <p:column>
+                    <f:facet name="header">
+                    Model
+                    </f:facet>
+                    #{car.model}
+                    <f:facet name="footer">
+                    8 digit code
+                    </f:facet>
+                </p:column>
+                <p:column headerText="Year" footerText="1960-2010">
+                    #{car.year}
+                </p:column>
+                //more columns
+                <f:facet name="footer">
+                In total there are #{fn:length(carBean.cars)} cars.
+                </f:facet>
+            </p:dataTable>
+        </div>
+    </h:body>
+</html>
