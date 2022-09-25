@@ -37,11 +37,10 @@ public class AltasBeanUI implements Serializable{
         profesor = new Profesor();
     }
 
-    /* public void login() throws IOException{
-        String appURL = "/index.xhtml";
+    public void alta() throws IOException{
+        String appURL = "/altasProfesores.xhtml";
         // los atributos de usuario vienen del xhtml 
-        Usuario us= new Usuario();
-        us.setIdusuario(0);
+        Profesor prof= new Profesor();
         us = loginHelper.Login(usuario.getCorreo(), usuario.getContrasena());
           if(us != null && us.getIdusuario()!=null){
             // asigno el usuario encontrado al usuario de esta clase para que 
