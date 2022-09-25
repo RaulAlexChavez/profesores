@@ -3,16 +3,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <h:head>
         <title>Manejo de profesores</title>
     </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-        <p:button outcome="index.html" value="Navigate"/>
-
+    <style>
+        div{
+            width: 33%; 
+            background-color: red; 
+            margin-left: auto; 
+            margin-right: auto; 
+            margin-top: 200px; 
+            border-radius: 15px;
+            text-align: center;
+        }
+        .menuitem{
+        }
+    </style>
+    <h:body style="background-color: green">
+        <div>
+            <p:megaMenu orientation="vertical">
+                <p:menuitem value="Alta de profesores" url="altasProfesores.xhtml" style="padding-left:35px; padding-right: 35px"/>
+                <p:menuitem value="Consulta general de profesores" url="#"/>
+                <p:menuitem value="Alta de Unidad de Aprendizaje" url="altasUA.xhtml"/>
+                <p:menuitem value="Consulta general de Unidades de aprendizaje" url="#"/>
+            </p:megaMenu>
+        </div>
     </h:body>
 </html>
 
