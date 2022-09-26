@@ -30,26 +30,22 @@ and open the template in the editor.
             <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
         </p:megaMenu>
         <div>
-            <p:dataTable var="car" value="#{carBean.cars}">
+            <p:dataTable var="profe" value="#{consultaProfesorUI.profesoresTodos}">
                 <f:facet name="header">
-                List of Cars
+                Lista profesores
                 </f:facet>
                 <p:column>
                     <f:facet name="header">
                     Model
                     </f:facet>
-                    #{car.model}
+                    #{profe.nombre}
                     <f:facet name="footer">
+                    </f:facet>
+                    #{profe.apellido}
+                    <f:facet name="footer">                        
                     8 digit code
                     </f:facet>
                 </p:column>
-                <p:column headerText="Year" footerText="1960-2010">
-                    #{car.year}
-                </p:column>
-                //more columns
-                <f:facet name="footer">
-                In total there are #{fn:length(carBean.cars)} cars.
-                </f:facet>
             </p:dataTable>
         </div>
     </h:body>
