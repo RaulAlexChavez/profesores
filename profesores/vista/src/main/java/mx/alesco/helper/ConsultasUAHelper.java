@@ -22,4 +22,8 @@ public class ConsultasUAHelper implements Serializable{
         return ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.todos();
     }
     
+    public UnidadDeAprendizaje uaPorId(int id){
+        return ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.porID(id);
+    }
+    
 }

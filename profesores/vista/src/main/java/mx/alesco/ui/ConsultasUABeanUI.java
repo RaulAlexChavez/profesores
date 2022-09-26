@@ -30,6 +30,6 @@ public class ConsultasUABeanUI implements Serializable{
     
     public List<UnidadDeAprendizaje> consultaUATodas() {
         return uaHelper.consultaUATodos();
-    } 
+    }
     
 }

@@ -7,6 +7,7 @@ package mx.alesco.ui;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -16,6 +17,7 @@ import javax.faces.context.FacesContext;
 import mx.alesco.entidad.Profesor;
 import mx.alesco.entidad.UnidadDeAprendizaje;
 import mx.alesco.helper.AltasProfesorHelper;
+import mx.alesco.helper.ConsultasUAHelper;
 import mx.alesco.integracion.ServiceFacadeLocator;
 /**
  *
@@ -31,6 +33,7 @@ public class AltasProfesorBeanUI implements Serializable{
     private String rfc;
     private int idUA;
     private UnidadDeAprendizaje ua;
+    private ArrayList<String> selectedUAsID;
     private List<UnidadDeAprendizaje> unidadDeAprendizajeList;
     
     public enum Resultado {
@@ -52,13 +55,21 @@ public class AltasProfesorBeanUI implements Serializable{
             return "altasProfesores.xhtml";
         }
         
-        UnidadDeAprendizaje unidadDeAprendizaje = profeHelper.unidadDeAprendizajePorId(idUA);
+        /*UnidadDeAprendizaje unidadDeAprendizaje = profeHelper.unidadDeAprendizajePorId(idUA);
         if(unidadDeAprendizaje == null){
             resultado = Resultado.UAWithIdDoesntExist;
             return "altasProfesores.xhtml";
+        }*/
+        
+        unidadDeAprendizajeList = new ArrayList<>();
+        ConsultasUAHelper uaHelper = new ConsultasUAHelper();
+        for(String ua_id_s : selectedUAsID){
+            int ua_id = Integer.parseInt(ua_id_s);
+            UnidadDeAprendizaje uaAux = uaHelper.uaPorId(ua_id);
+            unidadDeAprendizajeList.add(uaAux);
         }
         
-        Profesor profe = new Profesor(idProfe, nombre, apellido, rfc, unidadDeAprendizaje);
+        Profesor profe = new Profesor(idProfe, nombre, apellido, rfc, unidadDeAprendizajeList/*unidadDeAprendizaje*/);
         boolean success = profeHelper.altaProfe(profe);
         
         if(success) {
@@ -117,7 +128,7 @@ public class AltasProfesorBeanUI implements Serializable{
         apellido = "";
         rfc = "";
         ua = null;
-        unidadDeAprendizajeList = null;
+        /*unidadDeAprendizajeList = null;*/
     }
 
     public int getIdProfe() {
@@ -183,7 +194,13 @@ public class AltasProfesorBeanUI implements Serializable{
     public void setResultado(Resultado resultado) {
         this.resultado = resultado;
     }
-    
-    
+
+    public ArrayList<String> getSelectedUAsID() {
+        return selectedUAsID;
+    }
+
+    public void setSelectedUAsID(ArrayList<String> selectedUAsID) {
+        this.selectedUAsID = selectedUAsID;
+    }
 
 }
