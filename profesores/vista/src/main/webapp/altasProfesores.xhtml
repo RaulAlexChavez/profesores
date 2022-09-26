@@ -78,22 +78,11 @@ and open the template in the editor.
                     </div>
                     <div class="panel-body">
                         <div class=" form-group">
-                            <label>ID: </label><p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" style="margin-top: 5px"/><br></br>
-                            <label>Nombre: </label><p:inputText class ="form-control" placeholder="Nombre: " value=""/><br></br>
-                            <label>Apellidos: </label><p:inputText class ="form-control" placeholder="Apellidos: " value="" /><br></br>
-                            <label>RFC: </label><p:inputText class ="form-control" placeholder="RFC: " value="" style="margin-bottom: 15px"/><br></br>
-                            <label>ID de UA: </label><p:inputNumber class="form-control" placeholder="ID de UA: " value=""/>
-                        </div>
-                        <p:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-top: 30px"/>
-                            <p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" value="#{altaProfe_UI.idProfe}" />
-                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{altaProfe_UI.nombre}"/>
-                            <p:inputText class ="form-control" placeholder="Apellidos: " value="#{altaProfe_UI.apellido}" />
-                            <p:inputText class ="form-control" placeholder="RFC: " value="#{altaProfe_UI.rfc}" />
-                            <p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{altaProfe_UI.idUA}" />
-                            <!--<p:selectOneListbox style="margin-left: auto; margin-right: auto; margin-top: 10px">
-                                <f:selectItem itemLabel="Seleccione una Unidad de Aprendizaje" itemValue=""/>
-                                <f:selectItem itemLabel="TEST"/>
-                            </p:selectOneListbox>-->
+                            <label>ID: </label><p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" value="#{altaProfe_UI.idProfe}" /><br/>
+                            <label>Nombre: </label><p:inputText class ="form-control" placeholder="Nombre: " value="#{altaProfe_UI.nombre}"/><br/>
+                            <label>Apellidos: </label><p:inputText class ="form-control" placeholder="Apellidos: " value="#{altaProfe_UI.apellido}" /><br/>
+                            <label>RFC: </label><p:inputText class ="form-control" placeholder="RFC: " value="#{altaProfe_UI.rfc}" /><br/>
+                            <label>ID de UA: </label><p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{altaProfe_UI.idUA}" />
                         </div>
                         <h:commandButton action="#{altaProfe_UI.altaProfe()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px;" />
                     </div>
