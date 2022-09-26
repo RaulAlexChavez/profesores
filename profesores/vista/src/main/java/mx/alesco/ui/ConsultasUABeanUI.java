@@ -23,32 +23,13 @@ import mx.alesco.helper.ConsultasUAHelper;
 @SessionScoped
 public class ConsultasUABeanUI implements Serializable{
     private ConsultasUAHelper uaHelper;
-    private List<UnidadDeAprendizaje> uaTodas;
     
     public ConsultasUABeanUI() {
         uaHelper = new ConsultasUAHelper();
     }
     
-    /**
-     * Metodo postconstructor todo lo que este dentro de este metodo
-     * sera la primero que haga cuando cargue la pagina
-     */
-    @PostConstruct
-    public void init(){
-        uaTodas = consultaUATodas();
-    }
-    
     public List<UnidadDeAprendizaje> consultaUATodas() {
         return uaHelper.consultaUATodos();
-    }
-
-    public List<UnidadDeAprendizaje> getUaTodas() {
-        return uaTodas;
-    }
-
-    public void setUaTodas(List<UnidadDeAprendizaje> uaTodas) {
-        this.uaTodas = uaTodas;
-    }
-    
+    } 
     
 }

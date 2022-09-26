@@ -23,7 +23,6 @@ import mx.alesco.helper.ConsultasProfesoresHelper;
 @SessionScoped
 public class ConsultasProfesoresBeanUI implements Serializable{
     private ConsultasProfesoresHelper profeHelper;
-    private List<Profesor> profesoresTodos;
     
     public ConsultasProfesoresBeanUI() {
         profeHelper = new ConsultasProfesoresHelper();
@@ -31,13 +30,5 @@ public class ConsultasProfesoresBeanUI implements Serializable{
     
     public List<Profesor> consultaProfesoresTodos() {
         return profeHelper.consultaProfesorTodos();
-    }
-    
-    public List<Profesor> getProfesoresTodos() {
-        return profesoresTodos;
-    }
-
-    public void setProfesoresTodos(List<Profesor> profesoresTodos) {
-        this.profesoresTodos = profesoresTodos;
     }
 }

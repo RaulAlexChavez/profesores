@@ -35,8 +35,6 @@ public class AltasUABeanUI implements Serializable{
     }
     
     public String altaUA() {
-        System.out.println("Iniciando alta de profe desde BEAN UI...");
-        System.out.println("Nombre: " + nombre);
         UnidadDeAprendizaje ua = new UnidadDeAprendizaje(idUA, nombre, hc, ht, hl);
         boolean success = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua);
         
