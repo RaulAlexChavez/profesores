@@ -1,5 +1,6 @@
 /profesores/persistencia/target/
 /profesores/negocio/target/
 /profesores/vista/target/
-profesores/entidad/target/classes/mx/alesco/entidad/Profesor_.class
-profesores/entidad/target/classes/mx/alesco/entidad/UnidadDeAprendizaje_.class
+/profesores/entidad/target/classes/mx/alesco/entidad/Profesor_.class
+/profesores/entidad/target/classes/mx/alesco/entidad/UnidadDeAprendizaje_.class
+/profesores/entidad/src/main/resources/META-INF/persistence.xml

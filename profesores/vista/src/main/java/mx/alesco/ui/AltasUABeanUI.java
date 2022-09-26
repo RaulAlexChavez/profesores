@@ -21,11 +21,11 @@ import mx.alesco.helper.ConsultasProfesoresHelper;
  */
 @ManagedBean(name = "consultasProfesorUI")
 @SessionScoped
-public class ConsultasProfesoresBeanUI implements Serializable{
+public class AltasUABeanUI implements Serializable{
     private ConsultasProfesoresHelper profeHelper;
     private List<Profesor> profesoresTodos;
     
-    public ConsultasProfesoresBeanUI() {
+    public AltasUABeanUI() {
         profeHelper = new ConsultasProfesoresHelper();
     }
     
@@ -50,18 +50,4 @@ public class ConsultasProfesoresBeanUI implements Serializable{
         this.profesoresTodos = profesoresTodos;
     }
 
-    /*public void alta() throws IOException{
-        String appURL = "/altasProfesores.xhtml";
-        // los atributos de usuario vienen del xhtml 
-        Profesor prof= new Profesor();
-        us = loginHelper.Login(usuario.getCorreo(), usuario.getContrasena());
-          if(us != null && us.getIdusuario()!=null){
-            // asigno el usuario encontrado al usuario de esta clase para que 
-            // se muestre correctamente en la pagina de informacion
-            usuario=us;
-            FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
-        }else{
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario o contraseña incorrecta:", "Intente de nuevo"));          
-        }
-    }*/
 }
