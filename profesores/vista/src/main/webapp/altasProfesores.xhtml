@@ -46,8 +46,15 @@ and open the template in the editor.
             .ui-icon-home{
                 font-size: 32px;
             }
-            
-            
+            .success{
+                background-color: green
+            }
+            .error{
+                background-color: red;
+            }
+            .invisible{
+                visibility: hidden;
+            }
         </style>
     </h:head>
     <h:body style="background-color: green">
@@ -80,8 +87,7 @@ and open the template in the editor.
                         </p:commandButton>
                     </div>
                 </div>
-                <p:dialog header="Alta exitosa" widgetVar="dlg" modal="true">Alta realizada correctamente</p:dialog>
-                <p:dialog header="Alta fallida" widgetVar="dlg" modal="true">No se pudo realizar la alta</p:dialog>
+                <p:dialog header="Resultado" widgetVar="dlg" modal="true" class=""></p:dialog>
             </h:form>
         </div>
     </h:body>
