@@ -25,13 +25,13 @@ public class test {
         consultaUA(11293);*/
         
         // ALTA PROFESOR //
-        /*consultaProfesor(9898);
+        consultaProfesor(9898);
         altaProfesor();
-        consultaProfesor(9898);*/
+        consultaProfesor(9898);
         
         // CONSULTA PROFES Y UAS //
-        consultaProfesores();
-        consultaUAs();
+        /*consultaProfesores();
+        consultaUAs();*/
         
         // BORRAR PROFESOR //
         /*altaProfesor();
