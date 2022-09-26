@@ -65,7 +65,9 @@ and open the template in the editor.
                     <f:facet name="header">
                         Unidades de aprendizaje
                     </f:facet>
-                    #{profe.unidadDeAprendizajeList}
+                    <p:dataList value="#{profe.unidadDeAprendizajeList}" var="ua" itemType="disc">
+                        <p:link href="consultaUA.xhtml">[#{ua.idunidadDeAprendizaje}] #{ua.nombreUA}</p:link>
+                    </p:dataList>
                 </p:column>
             </p:dataTable>
         </div>

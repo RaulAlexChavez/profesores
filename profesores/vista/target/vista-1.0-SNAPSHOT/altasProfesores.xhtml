@@ -85,10 +85,21 @@ and open the template in the editor.
                             <label>ID de UA: </label><p:inputNumber class="form-control" placeholder="ID de UA: " value=""/>
                         </div>
                         <p:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-top: 30px"/>
+                            <p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" value="#{altaProfe_UI.idProfe}" />
+                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{altaProfe_UI.nombre}"/>
+                            <p:inputText class ="form-control" placeholder="Apellidos: " value="#{altaProfe_UI.apellido}" />
+                            <p:inputText class ="form-control" placeholder="RFC: " value="#{altaProfe_UI.rfc}" />
+                            <p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{altaProfe_UI.idUA}" />
+                            <!--<p:selectOneListbox style="margin-left: auto; margin-right: auto; margin-top: 10px">
+                                <f:selectItem itemLabel="Seleccione una Unidad de Aprendizaje" itemValue=""/>
+                                <f:selectItem itemLabel="TEST"/>
+                            </p:selectOneListbox>-->
+                        </div>
+                        <h:commandButton action="#{altaProfe_UI.altaProfe()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px;" />
                     </div>
                 </div>
-                <div class="#{altaUA_UI.resultadoClass()}">
-                    <p:outputLabel class="#{altaUA_UI.resultadoClass()}">#{altaUA_UI.resultadoText()}</p:outputLabel>
+                <div class="#{altaProfe_UI.resultadoClass()}">
+                    <p:outputLabel class="#{altaProfe_UI.resultadoClass()}">#{altaProfe_UI.resultadoText()}</p:outputLabel>
                 </div>
             </h:form>
         </div>

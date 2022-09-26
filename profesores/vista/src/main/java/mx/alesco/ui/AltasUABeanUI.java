@@ -43,12 +43,11 @@ public class AltasUABeanUI implements Serializable{
     
     public String altaUA() {
         UnidadDeAprendizaje ua = new UnidadDeAprendizaje(idUA, nombre, hc, ht, hl);
-        boolean success = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua);
-        
-        resetValues();
+        boolean success = uaHelper.altaUA(ua);
         
         if(success) {
             resultado = Resultado.Success;
+            resetValues();
         }
         else{
             resultado = Resultado.Error;
