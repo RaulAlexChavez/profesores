@@ -15,7 +15,6 @@ and open the template in the editor.
         <style>
             .form-group{
                 margin: auto;
-                background-color: green;
                 width: 66%;
                 align-items: center;
                 padding-left: auto;
@@ -25,12 +24,15 @@ and open the template in the editor.
                  
             }
             .alta{
-                background-color: red;
+                background-color: grey;
                 width: 50%;
                 margin: auto;
+                align-content: center;
+                text-align: center;
+                border-radius: 15px;
+                margin-top: 100px
             }
             .panel-body{
-                background-color: blue;
                 width: 80%;
                 margin: auto
                 
@@ -79,12 +81,15 @@ and open the template in the editor.
         <div>
             <h:form>
                 <div class="alta">
+                    <div class="panel-header" style="text-align: center">
+                        <h1> Modificacion de Profesores </h1>
+                    </div>
                     <div class="panel-body">
                         <div class=" form-group">
-                            <p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" disabled="true" />
-                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{modProfe_UI.nombre}"/>
-                            <p:inputText class ="form-control" placeholder="Apellido paterno: " value="#{modProfe_UI.apellido}" />
-                            <p:inputText class ="form-control" placeholder="RFC: " value="#{modProfe_UI.rfc}" /><br/>
+                            <label>ID: </label><p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" disabled="true" style="margin-left: 45px"/><br/>
+                            <label>Nombre: </label><p:inputText class ="form-control" placeholder="Nombre: " value="#{modProfe_UI.nombre}" style="margin-left: 10px"/><br/>
+                            <label>Apellidos: </label><p:inputText class ="form-control" placeholder="Apellidos: " value="#{modProfe_UI.apellido}"/><br/>
+                            <label>RFC: </label><p:inputText class ="form-control" placeholder="RFC: " value="#{modProfe_UI.rfc}" style="margin-left: 31px; margin-bottom: 5px"/><br/>
                             <label>ID de UA: </label><p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{modProfe_UI.idUA}" />
                         </div>
                         <p:commandButton value ="Guardar cambios" action="#{modProfe_UI.confirmarModificacionProfe()}" style="margin-left: 30px; margin-top: 30px"/>
