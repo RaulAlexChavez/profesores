@@ -52,6 +52,7 @@ public class ModificacionesProfesorBeanUI implements Serializable{
     public String modificarProfesor(int id, int idUA) {
         defineValues(id);
         this.idUA = idUA;
+        selectedUAsID = profeHelper.uasDeProfeEnString(idProfe);
         return "modifProfesores.xhtml?faces-redirect=true";
     }
     

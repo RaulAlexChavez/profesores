@@ -7,6 +7,7 @@ package mx.alesco.helper;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.context.FacesContext;
 import mx.alesco.entidad.Profesor;
@@ -31,4 +32,21 @@ public class ModificacionesProfesorHelper implements Serializable{
         return ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.porID(id);
     }
     
+    public ArrayList<Integer> uasDeProfeEnID(int idProfe){
+        Profesor profe = profesorPorId(idProfe);
+        ArrayList<Integer> intList = new ArrayList<>();
+        for(UnidadDeAprendizaje ua : profe.getUnidadDeAprendizajeList()) {
+            intList.add(ua.getIdunidadDeAprendizaje());
+        }
+        return intList;
+    }
+    
+    public ArrayList<String> uasDeProfeEnString(int idProfe){
+        ArrayList<Integer> ints = uasDeProfeEnID(idProfe);
+        ArrayList<String> strings = new ArrayList<>();
+        for(Integer i : ints){
+            strings.add("" + i);
+        }
+        return strings;
+    }
 }
