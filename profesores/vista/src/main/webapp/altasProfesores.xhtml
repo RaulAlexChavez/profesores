@@ -16,19 +16,19 @@ and open the template in the editor.
             .form-group{
                 margin: auto;
                 background-color: green;
-                width: 66%;
+                width: 80%;
                 align-items: center;
                 padding-left: auto;
                 padding-right: auto;
                 text-align: center;
                 align-content: center
-                 
             }
             .alta{
                 background-color: red;
                 width: 50%;
                 margin: auto;
                 align-content: center;
+                text-align: center
             }
             .panel-body{
                 background-color: blue;
@@ -40,14 +40,19 @@ and open the template in the editor.
                 margin-left: auto;
                 margin-top: 5px
             }
-            .menuitem{
-                margin-left: 30px
-            }
-            .ui-icon-home{
-                font-size: 32px;
-            }
             .success{
                 background-color: green
+            }
+            .error{
+                background-color: red;
+            }
+            .invisible{
+                visibility: hidden;
+            }
+            .success{
+                background-color: green;
+                border-color: black;
+                width: 30%    
             }
             .error{
                 background-color: red;
@@ -59,7 +64,7 @@ and open the template in the editor.
     </h:head>
     <h:body style="background-color: green">
         <p:megaMenu>
-            <p:menuitem url="index.xhtml" style="font-size: 32px" icon="ui-icon-home"/>
+            <p:menuitem url="index.xhtml" value="Inicio"/>
             <p:menuitem value="Alta de profesores" url="altasProfesores.xhtml"/>
             <p:menuitem value="Consulta general de profesores" url="consultaProfesores.xhtml"/>
             <p:menuitem value="Alta de Unidad de Aprendizaje" url="altasUA.xhtml"/>
@@ -68,20 +73,16 @@ and open the template in the editor.
         <div>
             <h:form>
                 <div class="alta">
-                    <div class="panel-header">
-                        <p:graphicImage url="resources/uabcl.png" class="logo" />
+                    <div class="panel-header" style="text-align: center">
+                    <h1> Alta de Profesores </h1>
                     </div>
                     <div class="panel-body">
                         <div class=" form-group">
-                            <p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" value="#{altaProfe_UI.idProfe}" />
-                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{altaProfe_UI.nombre}"/>
-                            <p:inputText class ="form-control" placeholder="Apellidos: " value="#{altaProfe_UI.apellido}" />
-                            <p:inputText class ="form-control" placeholder="RFC: " value="#{altaProfe_UI.rfc}" />
-                            <p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{altaProfe_UI.idUA}" />
-                            <!--<p:selectOneListbox style="margin-left: auto; margin-right: auto; margin-top: 10px">
-                                <f:selectItem itemLabel="Seleccione una Unidad de Aprendizaje" itemValue=""/>
-                                <f:selectItem itemLabel="TEST"/>
-                            </p:selectOneListbox>-->
+                            <label>ID: </label><p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" value="#{altaProfe_UI.idProfe}" /><br/>
+                            <label>Nombre: </label><p:inputText class ="form-control" placeholder="Nombre: " value="#{altaProfe_UI.nombre}"/><br/>
+                            <label>Apellidos: </label><p:inputText class ="form-control" placeholder="Apellidos: " value="#{altaProfe_UI.apellido}" /><br/>
+                            <label>RFC: </label><p:inputText class ="form-control" placeholder="RFC: " value="#{altaProfe_UI.rfc}" /><br/>
+                            <label>ID de UA: </label><p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{altaProfe_UI.idUA}" />
                         </div>
                         <h:commandButton action="#{altaProfe_UI.altaProfe()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px;" />
                     </div>

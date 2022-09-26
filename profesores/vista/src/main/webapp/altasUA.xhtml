@@ -50,7 +50,9 @@ and open the template in the editor.
                 visibility: hidden;
             }
             .success{
-                background-color: green
+                background-color: green;
+                border-color: black;
+                width: 30%    
             }
             .error{
                 background-color: red;
@@ -85,7 +87,7 @@ and open the template in the editor.
                             <label>Horas Taller:</label><p:inputText class ="form-control" placeholder="Horas Taller: " value="#{altaUA_UI.ht}" /><br></br>
                             <label>Horas laboratorio:</label><p:inputText class ="form-control" placeholder="Horas Laboratorio: " value="#{altaUA_UI.hl}" />
                         </div>
-                        <h:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px"/>
+                        <p:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px"/>
                     </div>
                 </div>
                 <div class="#{altaUA_UI.resultadoClass()}">
