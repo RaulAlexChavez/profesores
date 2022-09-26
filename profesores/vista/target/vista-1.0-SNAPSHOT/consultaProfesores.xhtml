@@ -69,6 +69,11 @@ and open the template in the editor.
                         <p:link href="consultaUA.xhtml">[#{ua.idunidadDeAprendizaje}] #{ua.nombreUA}</p:link>
                     </p:dataList>
                 </p:column>
+                <p:column>
+                    <h:form>
+                        <h:commandButton action="#{bajaProfe_UI.borrarConfirmacion(profe.idprofesor)}" value ="Borrar" style="margin-left: 30px; margin-top: 30px;" />
+                    </h:form>
+                </p:column>
             </p:dataTable>
         </div>
     </h:body>
