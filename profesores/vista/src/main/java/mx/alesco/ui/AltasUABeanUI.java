@@ -13,20 +13,22 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import mx.alesco.entidad.Profesor;
-import mx.alesco.helper.ConsultasProfesoresHelper;
+import mx.alesco.entidad.UnidadDeAprendizaje;
+import mx.alesco.helper.AltasUAHelper;
+import mx.alesco.integracion.ServiceFacadeLocator;
 /**
  *
  * @author adame
  */
-@ManagedBean(name = "consultasProfesorUI")
+@ManagedBean(name = "altaUA_UI")
 @SessionScoped
 public class AltasUABeanUI implements Serializable{
-    private ConsultasProfesoresHelper profeHelper;
-    private List<Profesor> profesoresTodos;
+    private AltasUAHelper uaHelper;
+    private String nombre;
+    private String apellido;
     
     public AltasUABeanUI() {
-        profeHelper = new ConsultasProfesoresHelper();
+        uaHelper = new AltasUAHelper();
     }
     
     /**
@@ -35,19 +37,30 @@ public class AltasUABeanUI implements Serializable{
      */
     @PostConstruct
     public void init(){
-        profesoresTodos = consultaProfesoresTodos();
+        return;
     }
     
-    public List<Profesor> consultaProfesoresTodos() {
-        return profeHelper.consultaProfesorTodos();
+    public void altaUA() {
+        System.out.println("Iniciando alta de profe desde BEAN UI...");
+        System.out.println("Nombre: " + nombre);
+        UnidadDeAprendizaje ua = new UnidadDeAprendizaje(9595, nombre, 0, 0, 0);
+        ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua);
     }
     
-    public List<Profesor> getProfesoresTodos() {
-        return profesoresTodos;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setProfesoresTodos(List<Profesor> profesoresTodos) {
-        this.profesoresTodos = profesoresTodos;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
 }

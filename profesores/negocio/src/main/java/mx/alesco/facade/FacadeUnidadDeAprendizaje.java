@@ -22,9 +22,10 @@ public class FacadeUnidadDeAprendizaje {
     public final ConsultaUnidadDeAprendizaje consultaUA = new ConsultaUnidadDeAprendizaje();
     
     /**
-     * FACADE<br>
-     * Guarda una nueva Unidad de Aprendizaje. No hay validación en caso de que ya exista un objeto con el mismo ID.
+     * FACADE
+     * Guarda una nueva Unidad de Aprendizaje si no existe una ya con el mismo ID.
      * @param ua El objeto UnidadDeAprendizaje a guardar.
+     * @return true si la alta fue exitosa. false si ya existía una UA con esa ID.
      */
     public boolean altaUnidadDeAprendizaje(UnidadDeAprendizaje ua){
         return DelegateUnidadDeAprendizaje.altaUnidadDeAprendizaje(ua);
