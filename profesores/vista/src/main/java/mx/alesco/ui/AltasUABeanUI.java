@@ -30,6 +30,13 @@ public class AltasUABeanUI implements Serializable{
     private int ht;
     private int hl;
     
+    public enum Resultado {
+        None,
+        Success,
+        Error
+    } 
+    Resultado resultado = Resultado.None;
+    
     public AltasUABeanUI() {
         uaHelper = new AltasUAHelper();
     }
@@ -41,9 +48,37 @@ public class AltasUABeanUI implements Serializable{
         resetValues();
         
         if(success) {
-            return "consultaProfesores.xhtml";
+            resultado = Resultado.Success;
         }
-        return "index.xhtml";
+        else{
+            resultado = Resultado.Error;
+        }
+        
+        return "altasUA.xhtml";
+    }
+    
+    public String resultadoText() {
+        switch(resultado) {
+            case None:
+                return "";
+            case Success:
+                return "La alta ha sido exitosa.";
+            case Error:
+                return "No se ha podido realizar la alta. Es posible que el ID ya esté ocupado.";
+        }
+        return "";
+    }
+    
+    public String resultadoClass() {
+        switch(resultado) {
+            case None:
+                return "invisible";
+            case Success:
+                return "success";
+            case Error:
+                return "error";
+        }
+        return "invisible";
     }
     
     public void resetValues(){
