@@ -37,6 +37,15 @@ and open the template in the editor.
                 margin-left: auto;
                 margin-right: auto
             }
+            .success{
+                background-color: green
+            }
+            .error{
+                background-color: red;
+            }
+            .invisible{
+                visibility: hidden;
+            }
         </style>
     </h:head>
     <h:body style="background-color: green">
@@ -66,6 +75,9 @@ and open the template in the editor.
                         </div>
                         <h:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px"/>
                     </div>
+                </div>
+                <div class="#{altaUA_UI.resultadoClass()}">
+                    <p:outputLabel class="#{altaUA_UI.resultadoClass()}">#{altaUA_UI.resultadoText()}</p:outputLabel>
                 </div>
             </h:form>
         </div>

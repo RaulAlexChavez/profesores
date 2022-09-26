@@ -87,7 +87,9 @@ and open the template in the editor.
                         </p:commandButton>
                     </div>
                 </div>
-                <p:dialog header="Resultado" widgetVar="dlg" modal="true" class=""></p:dialog>
+                <div class="#{altaUA_UI.resultadoClass()}">
+                    <p:outputLabel class="#{altaUA_UI.resultadoClass()}">#{altaUA_UI.resultadoText()}</p:outputLabel>
+                </div>
             </h:form>
         </div>
     </h:body>

@@ -50,12 +50,14 @@ public class AltasUABeanUI implements Serializable{
         if(success) {
             resultado = Resultado.Success;
         }
-        resultado = Resultado.Error;
+        else{
+            resultado = Resultado.Error;
+        }
         
         return "altasUA.xhtml";
     }
     
-    public String getResultadoText() {
+    public String resultadoText() {
         switch(resultado) {
             case None:
                 return "";
@@ -67,7 +69,7 @@ public class AltasUABeanUI implements Serializable{
         return "";
     }
     
-    public String getResultadoClass() {
+    public String resultadoClass() {
         switch(resultado) {
             case None:
                 return "invisible";
