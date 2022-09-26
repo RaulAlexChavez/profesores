@@ -45,7 +45,26 @@ and open the template in the editor.
             .ui-icon-home{
                 font-size: 32px;
             }
-            
+            .success{
+                background-color: green
+            }
+            .error{
+                background-color: red;
+            }
+            .invisible{
+                visibility: hidden;
+            }
+            .success{
+                background-color: green;
+                border-color: black;
+                width: 30%    
+            }
+            .error{
+                background-color: red;
+            }
+            .invisible{
+                visibility: hidden;
+            }
             
         </style>
     </h:head>
@@ -59,9 +78,6 @@ and open the template in the editor.
         </p:megaMenu>
         <div>
             <h:form>
-                <p:messages id="messages" showDetail="true" closable="true">
-                     
-                </p:messages>
                 <div class="alta">
                     <div class="panel-header">
                         <p:graphicImage url="resources/uabcl.png" class="logo" />
@@ -69,16 +85,17 @@ and open the template in the editor.
                     <div class="panel-body">
                         <div class=" form-group">
                             <p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" disabled="true" />
-                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{modifUI.profesor.nombre}"/>
-                            <p:inputText class ="form-control" placeholder="Apellido paterno: " value="#{modifUI.profesor.nombre}" />
-                            <p:inputText class ="form-control" placeholder="RFC: " value="#{modifUI.profesor.rfc}" />
-                            <p:selectOneListbox style="margin-left: auto; margin-right: auto; margin-top: 10px">
-                                <f:selectItem itemLabel="Seleccione una Unidad de Aprendizaje" itemValue=""/>
-                                <f:selectItem itemLabel="TEST"/>
-                            </p:selectOneListbox>  
+                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{modProfe_UI.nombre}"/>
+                            <p:inputText class ="form-control" placeholder="Apellido paterno: " value="#{modProfe_UI.apellido}" />
+                            <p:inputText class ="form-control" placeholder="RFC: " value="#{modProfe_UI.rfc}" /><br/>
+                            <label>ID de UA: </label><p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{modProfe_UI.idUA}" />
                         </div>
-                        <p:commandButton value ="Guardar cambios" actionListener="" style="margin-left: 30px; margin-top: 30px"/>
+                        <p:commandButton value ="Guardar cambios" action="#{modProfe_UI.confirmarModificacionProfe()}" style="margin-left: 30px; margin-top: 30px"/>
+                        <h:commandButton action="consultaUA.xhtml" value ="Cancelar" style="margin-left: 30px; margin-top: 30px;" />
                     </div>
+                </div>
+                <div class="#{modProfe_UI.resultadoClass()}">
+                    <p:outputLabel class="#{modProfe_UI.resultadoClass()}">INFO: #{modProfe_UI.resultadoText()}</p:outputLabel>
                 </div>
             </h:form>
         </div>
