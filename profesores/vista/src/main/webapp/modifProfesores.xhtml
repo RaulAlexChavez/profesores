@@ -95,12 +95,7 @@ and open the template in the editor.
                             <label>Nombre: </label><p:inputText class ="form-control" placeholder="Nombre: " value="#{modProfe_UI.nombre}" style="margin-left: 10px"/><br/>
                             <label>Apellidos: </label><p:inputText class ="form-control" placeholder="Apellidos: " value="#{modProfe_UI.apellido}"/><br/>
                             <label>RFC: </label><p:inputText class ="form-control" placeholder="RFC: " value="#{modProfe_UI.rfc}" style="margin-left: 31px; margin-bottom: 5px"/><br/>
-                            <label>ID de UA: </label><p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{modProfe_UI.idUA}" />
-                            <p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" disabled="true" />
-                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{modProfe_UI.nombre}"/>
-                            <p:inputText class ="form-control" placeholder="Apellido paterno: " value="#{modProfe_UI.apellido}" />
-                            <p:inputText class ="form-control" placeholder="RFC: " value="#{modProfe_UI.rfc}" /><br/>
-                            
+                            <label>ID de UA: </label><p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{modProfe_UI.idUA}" />                                          
                             <p:selectManyCheckbox class="uasList" id="checkboxTest" value="#{modProfe_UI.selectedUAsID}" layout="grid" columns="2">
                                 <f:selectItems class="uasList" value="#{consultasUA_UI.consultaUATodas()}" var="elem" itemLabel="#{elem.nombreUA}" itemValue="#{elem.idunidadDeAprendizaje}" />
                             </p:selectManyCheckbox>
