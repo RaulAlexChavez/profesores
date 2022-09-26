@@ -28,6 +28,7 @@ and open the template in the editor.
                 background-color: red;
                 width: 50%;
                 margin: auto;
+                margin-top: 50px
             }
             .panel-body{
                 background-color: blue;
@@ -59,9 +60,6 @@ and open the template in the editor.
         </p:megaMenu>
         <div>
             <h:form>
-                <p:messages id="messages" showDetail="true" closable="true">
-                     
-                </p:messages>
                 <div class="alta">
                     <div class="panel-header">
                         <p:graphicImage url="resources/uabcl.png" class="logo" />
@@ -70,17 +68,20 @@ and open the template in the editor.
                         <div class=" form-group">
                             <p:inputNumber class ="form-control" placeholder ="Id de profesor:" autocomplete="false" />
                             <p:inputText class ="form-control" placeholder="Nombre: " value=""/>
-                            <p:inputText class ="form-control" placeholder="Apellido paterno: " value="" />
-                            <p:inputText class ="form-control" placeholder="Apellido materno: " value="" />
+                            <p:inputText class ="form-control" placeholder="Apellidos: " value="" />
                             <p:inputText class ="form-control" placeholder="RFC: " value="" />
                             <p:selectOneListbox style="margin-left: auto; margin-right: auto; margin-top: 10px">
                                 <f:selectItem itemLabel="Seleccione una Unidad de Aprendizaje" itemValue=""/>
                                 <f:selectItem itemLabel="TEST"/>
                             </p:selectOneListbox>  
                         </div>
-                        <p:commandButton value ="Guardar cambios" actionListener="" style="margin-left: 30px; margin-top: 30px"/>
+                        <p:commandButton value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px" onclick="PF('dlg').show()">
+                            <p:resetInput target="form"/>
+                        </p:commandButton>
                     </div>
                 </div>
+                <p:dialog header="Alta exitosa" widgetVar="dlg" modal="true">Alta realizada correctamente</p:dialog>
+                <p:dialog header="Alta fallida" widgetVar="dlg" modal="true">No se pudo realizar la alta</p:dialog>
             </h:form>
         </div>
     </h:body>
