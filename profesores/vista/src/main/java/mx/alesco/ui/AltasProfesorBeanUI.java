@@ -36,7 +36,9 @@ public class AltasProfesorBeanUI implements Serializable{
     public enum Resultado {
         None,
         Success,
-        Error
+        Error,
+        MissingFields,
+        UAWithIdDoesntExist
     } 
     Resultado resultado = Resultado.None;
     
@@ -45,7 +47,17 @@ public class AltasProfesorBeanUI implements Serializable{
     }
     
     public String altaProfe() {
+        if(!todosLosCamposLlenos()) {
+            resultado = Resultado.MissingFields;
+            return "altasProfesores.xhtml";
+        }
+        
         UnidadDeAprendizaje unidadDeAprendizaje = profeHelper.unidadDeAprendizajePorId(idUA);
+        if(unidadDeAprendizaje == null){
+            resultado = Resultado.UAWithIdDoesntExist;
+            return "altasProfesores.xhtml";
+        }
+        
         Profesor profe = new Profesor(idProfe, nombre, apellido, rfc, unidadDeAprendizaje);
         boolean success = profeHelper.altaProfe(profe);
         
@@ -68,6 +80,10 @@ public class AltasProfesorBeanUI implements Serializable{
                 return "La alta de Profesor ha sido exitosa.";
             case Error:
                 return "No se ha podido realizar la alta de Profesor. Es posible que el ID ya esté ocupado.";
+            case MissingFields:
+                return "No se han llenado todos los campos necesarios.";
+            case UAWithIdDoesntExist:
+                return "No existe ninguna unidad de aprendizaje con el ID especificado.";
         }
         return "";
     }
@@ -80,8 +96,19 @@ public class AltasProfesorBeanUI implements Serializable{
                 return "success";
             case Error:
                 return "error";
+            case MissingFields:
+                return "error";
+            case UAWithIdDoesntExist:
+                return "error";
         }
         return "invisible";
+    }
+    
+    public boolean todosLosCamposLlenos() {
+        return
+        !"".equals(nombre) &&
+        !"".equals(apellido) &&
+        !"".equals(rfc);
     }
     
     public void resetValues(){

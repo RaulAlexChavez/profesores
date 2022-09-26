@@ -71,7 +71,9 @@ and open the template in the editor.
                     <f:facet name="header">
                         Profesores asignados
                     </f:facet>
-                    #{unidadAp.profesorList}
+                    <p:dataList value="#{unidadAp.profesorList}" var="profe" itemType="disc">
+                        <p:link href="consultaProfesores.xhtml">[#{profe.idprofesor}] #{profe.nombre}</p:link>
+                    </p:dataList>
                 </p:column>
             </p:dataTable>
         </div>
