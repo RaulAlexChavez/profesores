@@ -16,16 +16,19 @@ and open the template in the editor.
             .form-group{
                 margin: auto;
                 background-color: green;
-                width: 66%;
+                width: 80%;
                 align-items: center;
                 padding-left: auto;
-                padding-right: auto
+                padding-right: auto;
+                text-align: center;
+                align-content: center
             }
             .alta{
                 background-color: red;
                 width: 50%;
                 margin: auto;
                 align-content: center;
+                text-align: center
             }
             .panel-body{
                 background-color: blue;
@@ -35,7 +38,16 @@ and open the template in the editor.
             }
             .form-control{
                 margin-left: auto;
-                margin-right: auto
+                margin-top: 5px
+            }
+            .success{
+                background-color: green
+            }
+            .error{
+                background-color: red;
+            }
+            .invisible{
+                visibility: hidden;
             }
             .success{
                 background-color: green
@@ -62,16 +74,16 @@ and open the template in the editor.
                      
                 </p:messages>
                 <div class="alta">
-                    <div class="panel-header">
-                        <p:graphicImage url="resources/uabcl.png" class="logo" />
+                    <div class="panel-header" >
+                        <h1> Alta de Unidad de aprendizaje </h1>
                     </div>
                     <div class="panel-body">
                         <div class=" form-group">
-                            <p:inputNumber class ="form-control" placeholder ="Id de UA:" value="#{altaUA_UI.idUA}" autocomplete="false" />
-                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{altaUA_UI.nombre}" />
-                            <p:inputText class ="form-control" placeholder="Horas Clase: " value="#{altaUA_UI.hc}" />
-                            <p:inputText class ="form-control" placeholder="Horas Taller: " value="#{altaUA_UI.ht}" />
-                            <p:inputText class ="form-control" placeholder="Horas Laboratorio: " value="#{altaUA_UI.hl}" />
+                            <label>ID: </label><p:inputNumber class ="form-control" placeholder ="Id de UA:" value="#{altaUA_UI.idUA}" autocomplete="false" /><br></br>
+                            <label>Nombre:</label><p:inputText class ="form-control" placeholder="Nombre: " value="#{altaUA_UI.nombre}" /><br></br>
+                            <label>Horas clase:</label><p:inputText class ="form-control" placeholder="Horas Clase: " value="#{altaUA_UI.hc}" /><br></br>
+                            <label>Horas Taller:</label><p:inputText class ="form-control" placeholder="Horas Taller: " value="#{altaUA_UI.ht}" /><br></br>
+                            <label>Horas laboratorio:</label><p:inputText class ="form-control" placeholder="Horas Laboratorio: " value="#{altaUA_UI.hl}" />
                         </div>
                         <h:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px"/>
                     </div>
