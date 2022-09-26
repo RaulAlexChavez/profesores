@@ -51,6 +51,11 @@ and open the template in the editor.
             .invisible{
                 visibility: hidden;
             }
+            .uasList {
+                margin: 10px;
+                padding: 20px;
+                text-align: left;
+            }
         </style>
     </h:head>
     <h:body style="background-color: green">
@@ -74,8 +79,8 @@ and open the template in the editor.
                             <label>Apellidos: </label><p:inputText class ="form-control" placeholder="Apellidos: " value="#{altaProfe_UI.apellido}" /><br/>
                             <label>RFC: </label><p:inputText class ="form-control" placeholder="RFC: " value="#{altaProfe_UI.rfc}" style="margin-left: 31px; margin-bottom: 5px"/><br/>
                             
-                            <p:selectManyCheckbox id="checkboxTest" value="#{altaProfe_UI.selectedUAsID}">
-                                <f:selectItems value="#{consultasUA_UI.consultaUATodas()}" var="elem" itemLabel="#{elem.nombreUA}" itemValue="#{elem.idunidadDeAprendizaje}" />
+                            <p:selectManyCheckbox class="uasList" id="checkboxTest" value="#{altaProfe_UI.selectedUAsID}" layout="grid" columns="2">
+                                <f:selectItems class="uasList" value="#{consultasUA_UI.consultaUATodas()}" var="elem" itemLabel="#{elem.nombreUA}" itemValue="#{elem.idunidadDeAprendizaje}" />
                             </p:selectManyCheckbox>
                         </div>
                         <h:commandButton action="#{altaProfe_UI.altaProfe()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px;" />
