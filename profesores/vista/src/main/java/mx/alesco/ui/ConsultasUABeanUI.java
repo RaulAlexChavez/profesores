@@ -13,22 +13,23 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import mx.alesco.entidad.Profesor;
-import mx.alesco.helper.ConsultasProfesoresHelper;
+import mx.alesco.entidad.UnidadDeAprendizaje;
+import mx.alesco.helper.ConsultasUAHelper;
 /**
  *
  * @author adame
  */
-@ManagedBean(name = "consultasProfesorUI")
+@ManagedBean(name = "consultasUA_UI")
 @SessionScoped
-public class ConsultasProfesoresBeanUI implements Serializable{
-    private ConsultasProfesoresHelper profeHelper;
+public class ConsultasUABeanUI implements Serializable{
+    private ConsultasUAHelper uaHelper;
     
-    public ConsultasProfesoresBeanUI() {
-        profeHelper = new ConsultasProfesoresHelper();
+    public ConsultasUABeanUI() {
+        uaHelper = new ConsultasUAHelper();
     }
     
-    public List<Profesor> consultaProfesoresTodos() {
-        return profeHelper.consultaProfesorTodos();
-    }
+    public List<UnidadDeAprendizaje> consultaUATodas() {
+        return uaHelper.consultaUATodos();
+    } 
+    
 }

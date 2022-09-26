@@ -18,33 +18,39 @@ import mx.alesco.helper.AltasUAHelper;
 import mx.alesco.integracion.ServiceFacadeLocator;
 /**
  *
- * @author adame
+ * @author Alex
  */
 @ManagedBean(name = "altaUA_UI")
 @SessionScoped
 public class AltasUABeanUI implements Serializable{
     private AltasUAHelper uaHelper;
+    private int idUA;
     private String nombre;
-    private String apellido;
+    private int hc;
+    private int ht;
+    private int hl;
     
     public AltasUABeanUI() {
         uaHelper = new AltasUAHelper();
     }
     
-    /**
-     * Metodo postconstructor todo lo que este dentro de este metodo
-     * sera la primero que haga cuando cargue la pagina
-     */
-    @PostConstruct
-    public void init(){
-        return;
+    public String altaUA() {
+        UnidadDeAprendizaje ua = new UnidadDeAprendizaje(idUA, nombre, hc, ht, hl);
+        boolean success = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua);
+        
+        resetValues();
+        
+        if(success) {
+            return "consultaProfesores.xhtml";
+        }
+        return "index.xhtml";
     }
     
-    public void altaUA() {
-        System.out.println("Iniciando alta de profe desde BEAN UI...");
-        System.out.println("Nombre: " + nombre);
-        UnidadDeAprendizaje ua = new UnidadDeAprendizaje(9595, nombre, 0, 0, 0);
-        ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua);
+    public void resetValues(){
+        nombre = "";
+        hc = 0;
+        ht = 0;
+        hl = 0;
     }
     
     public String getNombre() {
@@ -55,12 +61,36 @@ public class AltasUABeanUI implements Serializable{
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public int getHc() {
+        return hc;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setHc(int hc) {
+        this.hc = hc;
+    }
+
+    public int getHt() {
+        return ht;
+    }
+
+    public void setHt(int ht) {
+        this.ht = ht;
+    }
+
+    public int getHl() {
+        return hl;
+    }
+
+    public void setHl(int hl) {
+        this.hl = hl;
+    }
+
+    public int getIdUA() {
+        return idUA;
+    }
+
+    public void setIdUA(int idUA) {
+        this.idUA = idUA;
     }
 
 }

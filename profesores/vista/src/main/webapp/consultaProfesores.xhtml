@@ -33,7 +33,7 @@ and open the template in the editor.
             <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
         </p:megaMenu>
         <div>
-            <p:dataTable class="tabla" var="profe" value="#{consultasProfesorUI.profesoresTodos}">
+            <p:dataTable class="tabla" var="profe" value="#{consultasProfesorUI.consultaProfesoresTodos()}">
                 <f:facet name="header">
                 Lista profesores
                 </f:facet>

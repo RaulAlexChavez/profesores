@@ -58,13 +58,13 @@ and open the template in the editor.
                     </div>
                     <div class="panel-body">
                         <div class=" form-group">
-                            <p:inputNumber class ="form-control" placeholder ="Id de UA:" autocomplete="false" />
+                            <p:inputNumber class ="form-control" placeholder ="Id de UA:" value="#{altaUA_UI.idUA}" autocomplete="false" />
                             <p:inputText class ="form-control" placeholder="Nombre: " value="#{altaUA_UI.nombre}" />
-                            <p:inputText class ="form-control" placeholder="Horas Clase: " value="" />
-                            <p:inputText class ="form-control" placeholder="Horas Taller: " value="" />
-                            <p:inputText class ="form-control" placeholder="Horas Laboratorio: " value="" />
+                            <p:inputText class ="form-control" placeholder="Horas Clase: " value="#{altaUA_UI.hc}" />
+                            <p:inputText class ="form-control" placeholder="Horas Taller: " value="#{altaUA_UI.ht}" />
+                            <p:inputText class ="form-control" placeholder="Horas Laboratorio: " value="#{altaUA_UI.hl}" />
                         </div>
-                        <p:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px"/>
+                        <h:commandButton action="#{altaUA_UI.altaUA()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px"/>
                     </div>
                 </div>
             </h:form>
