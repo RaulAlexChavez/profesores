@@ -8,22 +8,33 @@
         <title>Manejo de profesores</title>
     </h:head>
     <style>
-        div{
-            width: 33%; 
+        #ventana{
+            width: 25%; 
             background-color: grey; 
             margin-left: auto; 
             margin-right: auto; 
-            margin-top: 200px; 
+            margin-top: 50px; 
             border-radius: 15px;
             text-align: center;
+            padding-bottom: 30px;
+            padding-top: 30px
         }
-        .menuitem{
-            
+        .logo{
+            width: 20%;
+            margin-left: auto;
+            margin-right: auto;
+                
         }
     </style>
     <h:body style="background-color: green">
-        <div>
-            <p:megaMenu orientation="vertical">
+        <div style="text-align: center">
+            <p:graphicImage url="resources/uabcl.png" class="logo" />
+            <h1>
+                Sistema de manejo de profesores
+            </h1>
+        </div>
+        <div id="ventana">
+            <p:megaMenu orientation="vertical" style="margin-left:auto; margin-right: auto">
                 <p:menuitem value="Alta de profesores" url="altasProfesores.xhtml" style="padding-left:35px; padding-right: 35px"/>
                 <p:menuitem value="Consulta general de profesores" url="consultaProfesores.xhtml"/>
                 <p:menuitem value="Alta de Unidad de Aprendizaje" url="altasUA.xhtml"/>

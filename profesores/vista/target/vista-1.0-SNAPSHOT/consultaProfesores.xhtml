@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Altas de profesores</title>
+        <title>Consulta genneral de profesores</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <style>
             .menuitem{
@@ -26,7 +26,7 @@ and open the template in the editor.
     </h:head>
     <h:body style="background-color: green">
         <p:megaMenu>
-            <p:menuitem url="index.xhtml" style="font-size: 32px" icon="ui-icon-home"/>
+            <p:menuitem url="index.xhtml" value="Inicio"/>
             <p:menuitem value="Alta de profesores" url="altasProfesores.xhtml"/>
             <p:menuitem value="Consulta general de profesores" url="consultaProfesores.xhtml"/>
             <p:menuitem value="Alta de Unidad de Aprendizaje" url="altasUA.xhtml"/>
@@ -70,6 +70,9 @@ and open the template in the editor.
                     </p:dataList>
                 </p:column>
                 <p:column>
+                    <f:facet name="header">
+                        Acciones
+                    </f:facet>
                     <h:form>
                         <h:commandButton action="#{bajaProfe_UI.borrarConfirmacion(profe.idprofesor)}" value ="Borrar" style="margin-left: 30px; margin-top: 30px;" />
                     </h:form>
