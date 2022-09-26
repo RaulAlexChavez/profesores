@@ -18,8 +18,8 @@ import mx.alesco.integracion.ServiceFacadeLocator;
  */
 public class AltasUAHelper implements Serializable{
     
-    public List<UnidadDeAprendizaje> consultaProfesorTodos() {
+    /*public List<UnidadDeAprendizaje> consultaProfesorTodos() {
         return ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.todos();
-    }
+    }*/
     
 }
