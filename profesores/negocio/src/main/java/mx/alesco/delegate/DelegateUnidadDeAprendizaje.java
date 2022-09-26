@@ -63,7 +63,11 @@ public class DelegateUnidadDeAprendizaje {
          * @return La UnidadDeAprendizaje con la ID.
          */
         public static UnidadDeAprendizaje porID(int id_ua) {
-            return ServiceLocator.getInstanceUnidadDeAprendizajeDAO().find(id_ua);
+            UnidadDeAprendizajeDAO uaDAO = ServiceLocator.getInstanceUnidadDeAprendizajeDAO();
+            if(uaDAO.unidadDeAprendizajeAlreadyExistsWithID(id_ua)) {
+                return uaDAO.find(id_ua);
+            }
+            return null;
         }
         
         /**
