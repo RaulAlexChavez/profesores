@@ -21,5 +21,4 @@ public class AltasUAHelper implements Serializable{
     public boolean altaUA(UnidadDeAprendizaje ua) {
         return ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua);
     }
-    
 }

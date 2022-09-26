@@ -19,6 +19,9 @@ and open the template in the editor.
             .ui-icon-home{
                 font-size: 32px;
             }
+            .tabla{
+                margin-top: 50px
+            }
         </style>
     </h:head>
     <h:body style="background-color: green">
@@ -30,21 +33,39 @@ and open the template in the editor.
             <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
         </p:megaMenu>
         <div>
-            <p:dataTable var="profe" value="#{consultasProfesorUI.profesoresTodos}">
+            <p:dataTable class="tabla" var="profe" value="#{consultasProfesorUI.profesoresTodos}">
                 <f:facet name="header">
                 Lista profesores
                 </f:facet>
                 <p:column>
                     <f:facet name="header">
-                    Model
+                        ID
+                    </f:facet>
+                    #{profe.idprofesor}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Nombre
                     </f:facet>
                     #{profe.nombre}
-                    <f:facet name="footer">
+                </p:column>
+                <p:column>
+                   <f:facet name="header">
+                       Apellidos
                     </f:facet>
                     #{profe.apellido}
-                    <f:facet name="footer">                        
-                    8 digit code
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        RFC
                     </f:facet>
+                    #{profe.rfc}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Unidades de aprendizaje
+                    </f:facet>
+                    #{profe.rfc}
                 </p:column>
             </p:dataTable>
         </div>

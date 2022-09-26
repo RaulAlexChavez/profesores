@@ -19,6 +19,9 @@ and open the template in the editor.
             .ui-icon-home{
                 font-size: 32px;
             }
+            .tabla{
+                margin-top: 50px
+            }
         </style>
     </h:head>
     <h:body style="background-color: green">
@@ -30,26 +33,40 @@ and open the template in the editor.
             <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
         </p:megaMenu>
         <div>
-            <p:dataTable var="car" value="#{carBean.cars}">
+            <p:dataTable class="tabla" var="unidadAp" value="#{consultasProfesorUI.profesoresTodos}">
                 <f:facet name="header">
-                List of Cars
+                Lista Unidades de aprendizaje
                 </f:facet>
                 <p:column>
                     <f:facet name="header">
-                    Model
+                        ID
                     </f:facet>
-                    #{car.model}
-                    <f:facet name="footer">
-                    8 digit code
+                    #{unidadAp.idprofesor}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Nombre
                     </f:facet>
+                    #{unidadAp.nombre}
                 </p:column>
-                <p:column headerText="Year" footerText="1960-2010">
-                    #{car.year}
+                <p:column>
+                   <f:facet name="header">
+                       Horas clase
+                    </f:facet>
+                    #{unidadAp.apellido}
                 </p:column>
-                //more columns
-                <f:facet name="footer">
-                In total there are #{fn:length(carBean.cars)} cars.
-                </f:facet>
+                <p:column>
+                    <f:facet name="header">
+                        Horas taller
+                    </f:facet>
+                    #{profe.rfc}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Horas laboratorio
+                    </f:facet>
+                    #{profe.rfc}
+                </p:column>                
             </p:dataTable>
         </div>
     </h:body>
