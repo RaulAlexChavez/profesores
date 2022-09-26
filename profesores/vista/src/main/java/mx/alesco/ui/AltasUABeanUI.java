@@ -24,6 +24,7 @@ import mx.alesco.integracion.ServiceFacadeLocator;
 @SessionScoped
 public class AltasUABeanUI implements Serializable{
     private AltasUAHelper uaHelper;
+    private int idUA;
     private String nombre;
     private int hc;
     private int ht;
@@ -33,31 +34,25 @@ public class AltasUABeanUI implements Serializable{
         uaHelper = new AltasUAHelper();
     }
     
-    
-    /**
-     * Metodo postconstructor todo lo que este dentro de este metodo
-     * sera la primero que haga cuando cargue la pagina
-     */
-    @PostConstruct
-    public void init(){
-        System.out.println("Init postconstruct AltasUABeanUI");
-    }
-    
     public String altaUA() {
         System.out.println("Iniciando alta de profe desde BEAN UI...");
         System.out.println("Nombre: " + nombre);
-        UnidadDeAprendizaje ua = new UnidadDeAprendizaje(9595, nombre, 0, 0, 0);
+        UnidadDeAprendizaje ua = new UnidadDeAprendizaje(idUA, nombre, hc, ht, hl);
         boolean success = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().altaUnidadDeAprendizaje(ua);
         
-        nombre = "";
-        hc = 0;
-        ht = 0;
-        hl = 0;
+        resetValues();
         
         if(success) {
             return "consultaProfesores.xhtml";
         }
         return "index.xhtml";
+    }
+    
+    public void resetValues(){
+        nombre = "";
+        hc = 0;
+        ht = 0;
+        hl = 0;
     }
     
     public String getNombre() {
@@ -92,6 +87,12 @@ public class AltasUABeanUI implements Serializable{
         this.hl = hl;
     }
 
-    
+    public int getIdUA() {
+        return idUA;
+    }
+
+    public void setIdUA(int idUA) {
+        this.idUA = idUA;
+    }
 
 }

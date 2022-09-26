@@ -29,15 +29,6 @@ public class ConsultasProfesoresBeanUI implements Serializable{
         profeHelper = new ConsultasProfesoresHelper();
     }
     
-    /**
-     * Metodo postconstructor todo lo que este dentro de este metodo
-     * sera la primero que haga cuando cargue la pagina
-     */
-    @PostConstruct
-    public void init(){
-        profesoresTodos = consultaProfesoresTodos();
-    }
-    
     public List<Profesor> consultaProfesoresTodos() {
         return profeHelper.consultaProfesorTodos();
     }
@@ -49,19 +40,4 @@ public class ConsultasProfesoresBeanUI implements Serializable{
     public void setProfesoresTodos(List<Profesor> profesoresTodos) {
         this.profesoresTodos = profesoresTodos;
     }
-
-    /*public void alta() throws IOException{
-        String appURL = "/altasProfesores.xhtml";
-        // los atributos de usuario vienen del xhtml 
-        Profesor prof= new Profesor();
-        us = loginHelper.Login(usuario.getCorreo(), usuario.getContrasena());
-          if(us != null && us.getIdusuario()!=null){
-            // asigno el usuario encontrado al usuario de esta clase para que 
-            // se muestre correctamente en la pagina de informacion
-            usuario=us;
-            FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + appURL);
-        }else{
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario o contraseña incorrecta:", "Intente de nuevo"));          
-        }
-    }*/
 }

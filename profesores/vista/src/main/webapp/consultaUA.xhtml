@@ -33,7 +33,7 @@ and open the template in the editor.
             <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
         </p:megaMenu>
         <div>
-            <p:dataTable class="tabla" var="unidadAp" value="#{consultasProfesorUI.profesoresTodos}">
+            <p:dataTable class="tabla" var="unidadAp" value="#{consultasUA_UI.consultaUATodas()}">
                 <f:facet name="header">
                 Lista Unidades de aprendizaje
                 </f:facet>
@@ -41,31 +41,31 @@ and open the template in the editor.
                     <f:facet name="header">
                         ID
                     </f:facet>
-                    #{unidadAp.idprofesor}
+                    #{unidadAp.idunidadDeAprendizaje}
                 </p:column>
                 <p:column>
                     <f:facet name="header">
                         Nombre
                     </f:facet>
-                    #{unidadAp.nombre}
+                    #{unidadAp.nombreUA}
                 </p:column>
                 <p:column>
                    <f:facet name="header">
                        Horas clase
                     </f:facet>
-                    #{unidadAp.apellido}
+                    #{unidadAp.horasClase}
                 </p:column>
                 <p:column>
                     <f:facet name="header">
                         Horas taller
                     </f:facet>
-                    #{profe.rfc}
+                    #{unidadAp.horasTaller}
                 </p:column>
                 <p:column>
                     <f:facet name="header">
                         Horas laboratorio
                     </f:facet>
-                    #{profe.rfc}
+                    #{unidadAp.horasLaboratorio}
                 </p:column>                
             </p:dataTable>
         </div>
