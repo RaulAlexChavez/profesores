@@ -42,6 +42,13 @@ public class ConsultasProfesoresBeanUI implements Serializable{
         return profeHelper.consultaProfesorTodos();
     }
     
+    public List<Profesor> getProfesoresTodos() {
+        return profesoresTodos;
+    }
+
+    public void setProfesoresTodos(List<Profesor> profesoresTodos) {
+        this.profesoresTodos = profesoresTodos;
+    }
 /*
     public void alta() throws IOException{
         String appURL = "/altasProfesores.xhtml";

@@ -14,7 +14,7 @@ import mx.alesco.integracion.ServiceFacadeLocator;
 
 /**
  *
- * @author Kevin
+ * @author Alex
  */
 public class ConsultasProfesoresHelper implements Serializable{
     
