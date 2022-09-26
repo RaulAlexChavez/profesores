@@ -7,6 +7,7 @@ package mx.alesco.helper;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
 import javax.faces.context.FacesContext;
 import mx.alesco.entidad.Profesor;
@@ -19,7 +20,15 @@ import mx.alesco.integracion.ServiceFacadeLocator;
 public class ConsultasProfesoresHelper implements Serializable{
     
     public List<Profesor> consultaProfesorTodos() {
-        return ServiceFacadeLocator.getInstanceFacadeProfesor().consultaProfesor.todos();
+        Comparator c = new Comparator<Profesor>() {
+            @Override
+            public int compare(Profesor o1, Profesor o2) {
+                return o1.getNombre().compareTo(o2.getNombre());
+            }
+        };
+        List<Profesor> profes = ServiceFacadeLocator.getInstanceFacadeProfesor().consultaProfesor.todos();
+        profes.sort(c);
+        return profes;
     }
     
 }
