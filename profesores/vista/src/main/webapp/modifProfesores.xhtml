@@ -85,7 +85,10 @@ and open the template in the editor.
                             <p:inputText class ="form-control" placeholder="Nombre: " value="#{modProfe_UI.nombre}"/>
                             <p:inputText class ="form-control" placeholder="Apellido paterno: " value="#{modProfe_UI.apellido}" />
                             <p:inputText class ="form-control" placeholder="RFC: " value="#{modProfe_UI.rfc}" /><br/>
-                            <label>ID de UA: </label><p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{modProfe_UI.idUA}" />
+                            
+                            <p:selectManyCheckbox id="checkboxTest" value="#{modProfe_UI.selectedUAsID}">
+                                <f:selectItems value="#{consultasUA_UI.consultaUATodas()}" var="elem" itemLabel="#{elem.nombreUA}" itemValue="#{elem.idunidadDeAprendizaje}" />
+                            </p:selectManyCheckbox>
                         </div>
                         <p:commandButton value ="Guardar cambios" action="#{modProfe_UI.confirmarModificacionProfe()}" style="margin-left: 30px; margin-top: 30px"/>
                         <h:commandButton action="consultaUA.xhtml" value ="Cancelar" style="margin-left: 30px; margin-top: 30px;" />
