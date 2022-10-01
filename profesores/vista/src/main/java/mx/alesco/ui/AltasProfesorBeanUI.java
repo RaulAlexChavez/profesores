@@ -50,16 +50,15 @@ public class AltasProfesorBeanUI implements Serializable{
     }
     
     public String altaProfe() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message;
+        
         if(!todosLosCamposLlenos()) {
             resultado = Resultado.MissingFields;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "No se han llenado todos los campos necesarios.", "");
+            context.addMessage("general-altasProfesores", message);
             return "altasProfesores.xhtml";
         }
-        
-        /*UnidadDeAprendizaje unidadDeAprendizaje = profeHelper.unidadDeAprendizajePorId(idUA);
-        if(unidadDeAprendizaje == null){
-            resultado = Resultado.UAWithIdDoesntExist;
-            return "altasProfesores.xhtml";
-        }*/
         
         unidadDeAprendizajeList = new ArrayList<>();
         ConsultasUAHelper uaHelper = new ConsultasUAHelper();
@@ -75,9 +74,13 @@ public class AltasProfesorBeanUI implements Serializable{
         if(success) {
             resultado = Resultado.Success;
             resetValues();
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, ("El/la profesor(a) " + nombre + " se ha dado de alta correctamente."), "");
+            context.addMessage("general-altasProfesores", message);
         }
         else{
             resultado = Resultado.Error;
+            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No se ha podido dar la alta.", "Es posible que el ID ya esté ocupado.");
+            context.addMessage("general-altasProfesores", message);
         }
         
         return "altasProfesores.xhtml";
