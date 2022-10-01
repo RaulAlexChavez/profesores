@@ -40,17 +40,6 @@ and open the template in the editor.
                 margin-left: auto;
                 margin-top: 5px
             }
-            .success{
-                background-color: green;
-                border-color: black;
-                width: 30%    
-            }
-            .error{
-                background-color: red;
-            }
-            .invisible{
-                visibility: hidden;
-            }
             .uasList {
                 margin: 10px;
                 padding: 20px;
@@ -85,9 +74,6 @@ and open the template in the editor.
                         </div>
                         <h:commandButton action="#{altaProfe_UI.altaProfe()}" value ="Guardar cambios" style="margin-left: 30px; margin-top: 30px;" />
                     </div>
-                </div>
-                <div class="#{altaProfe_UI.resultadoClass()}">
-                    <p:outputLabel class="#{altaProfe_UI.resultadoClass()}">#{altaProfe_UI.resultadoText()}</p:outputLabel>
                 </div>
                 <p:messages id="messages" for="general-altasProfesores" showDetail="true" closable="true"></p:messages>
             </h:form>

@@ -54,7 +54,6 @@ public class AltasProfesorBeanUI implements Serializable{
         FacesMessage message;
         
         if(!todosLosCamposLlenos()) {
-            resultado = Resultado.MissingFields;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "No se han llenado todos los campos necesarios.", "");
             context.addMessage("general-altasProfesores", message);
             return "altasProfesores.xhtml";
@@ -72,50 +71,16 @@ public class AltasProfesorBeanUI implements Serializable{
         boolean success = profeHelper.altaProfe(profe);
         
         if(success) {
-            resultado = Resultado.Success;
             resetValues();
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, ("El/la profesor(a) " + nombre + " se ha dado de alta correctamente."), "");
             context.addMessage("general-altasProfesores", message);
         }
         else{
-            resultado = Resultado.Error;
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No se ha podido dar la alta.", "Es posible que el ID ya esté ocupado.");
             context.addMessage("general-altasProfesores", message);
         }
         
         return "altasProfesores.xhtml";
-    }
-    
-    public String resultadoText() {
-        switch(resultado) {
-            case None:
-                return "";
-            case Success:
-                return "La alta de Profesor ha sido exitosa.";
-            case Error:
-                return "No se ha podido realizar la alta de Profesor. Es posible que el ID ya esté ocupado.";
-            case MissingFields:
-                return "No se han llenado todos los campos necesarios.";
-            case UAWithIdDoesntExist:
-                return "No existe ninguna unidad de aprendizaje con el ID especificado.";
-        }
-        return "";
-    }
-    
-    public String resultadoClass() {
-        switch(resultado) {
-            case None:
-                return "invisible";
-            case Success:
-                return "success";
-            case Error:
-                return "error";
-            case MissingFields:
-                return "error";
-            case UAWithIdDoesntExist:
-                return "error";
-        }
-        return "invisible";
     }
     
     public boolean todosLosCamposLlenos() {
