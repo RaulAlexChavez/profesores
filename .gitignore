@@ -4,3 +4,8 @@
 /profesores/entidad/target/classes/mx/alesco/entidad/Profesor_.class
 /profesores/entidad/target/classes/mx/alesco/entidad/UnidadDeAprendizaje_.class
 /profesores/entidad/src/main/resources/META-INF/persistence.xml
+profesores/vista/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+profesores/persistencia/src/main/resources/hibernate.cfg.xml
+*.lst
+profesores/entidad/target/entidad-1.0-SNAPSHOT.jar
+profesores/vista/target/vista-1.0-SNAPSHOT.war
