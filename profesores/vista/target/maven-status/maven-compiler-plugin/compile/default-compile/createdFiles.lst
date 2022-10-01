@@ -8,5 +8,4 @@ mx\alesco\helper\AltasUAHelper.class
 mx\alesco\helper\ConsultasUAHelper.class
 mx\alesco\ui\ConsultasUABeanUI.class
 mx\alesco\ui\AltasProfesorBeanUI$Resultado.class
-mx\alesco\ui\AltasProfesorBeanUI$1.class
 mx\alesco\ui\AltasUABeanUI$Resultado.class

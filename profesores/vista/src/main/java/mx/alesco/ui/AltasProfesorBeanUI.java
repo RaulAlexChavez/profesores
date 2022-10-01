@@ -59,6 +59,10 @@ public class AltasProfesorBeanUI implements Serializable{
             return "altasProfesores.xhtml";
         }
         
+        if(!isRFCValid()) {
+            return "altasProfesores.xhtml";
+        }
+        
         unidadDeAprendizajeList = new ArrayList<>();
         ConsultasUAHelper uaHelper = new ConsultasUAHelper();
         for(String ua_id_s : selectedUAsID){
@@ -88,6 +92,19 @@ public class AltasProfesorBeanUI implements Serializable{
         !"".equals(nombre) &&
         !"".equals(apellido) &&
         !"".equals(rfc);
+    }
+    
+    public boolean isRFCValid() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage message;
+        
+        if(rfc.length() != 13) {
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "El RFC debe tener 13 caracteres.", "");
+            context.addMessage("rfc-altasProfesores", message);
+            return false;
+        }
+        
+        return true;
     }
     
     public void resetValues(){

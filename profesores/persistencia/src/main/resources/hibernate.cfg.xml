@@ -9,7 +9,7 @@
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
     <!-- Asegurarse de que tenga el nombre de nuestra BD -->
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/profesores?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/profesores?zeroDateTimeBehavior=convertToNull</property>
     <!-- Asegurarse de que tenga el username y password que nosotros pusimos en mySQL -->
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
