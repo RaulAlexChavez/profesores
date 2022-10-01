@@ -5,6 +5,8 @@
  */
 package mx.alesco.ui;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,15 +37,6 @@ public class AltasProfesorBeanUI implements Serializable{
     private UnidadDeAprendizaje ua;
     private ArrayList<String> selectedUAsID;
     private List<UnidadDeAprendizaje> unidadDeAprendizajeList;
-    
-    public enum Resultado {
-        None,
-        Success,
-        Error,
-        MissingFields,
-        UAWithIdDoesntExist
-    } 
-    Resultado resultado = Resultado.None;
     
     public AltasProfesorBeanUI() {
         profeHelper = new AltasProfesorHelper();
@@ -103,6 +96,37 @@ public class AltasProfesorBeanUI implements Serializable{
             context.addMessage("rfc-altasProfesores", message);
             return false;
         }
+        
+        Pattern pattern = Pattern.compile("[A-Za-z]{4}\\d{6}\\w{3}");
+        Matcher matcher = pattern.matcher(rfc);
+        boolean matchFound = matcher.find();
+        if(!matchFound){
+            message = new FacesMessage(
+                FacesMessage.SEVERITY_WARN,
+                "El formato del RFC es incorrecto",
+                "Deben ser 4 letras, 6 números y 3 caracteres.\n" /*+ 
+                "Las primeras 2 letras son del apellido paterno.\n" +
+                "Las 3ra lerta es la 1ra letra del apellido materno.\n" +
+                "Las 4ta letra es la 1ra letra del nombre.\n" + 
+                "Los siguientes 2 números son los útlimos 2 del año de nacimiento.\n" +
+                "Los siguientes 2 números son el mes de nacimiento.\n" +
+                "Los siguientes 2 números son el día de nacimiento.\n" + 
+                "Los últimos 3 caracteres son la homoclave."*/);
+            context.addMessage("rfc-altasProfesores", message);
+            return false;
+        }
+        
+        // Convert rfc to upper case
+        String newRFC = "";
+        for(int i = 0; i < rfc.length(); i++) {
+            char c = rfc.charAt(i);
+            if(Character.isLetter(c)){
+                c = Character.toUpperCase(c);
+            }
+            newRFC += c;
+        }
+        
+        rfc = newRFC;
         
         return true;
     }
@@ -170,14 +194,6 @@ public class AltasProfesorBeanUI implements Serializable{
 
     public void setUnidadDeAprendizajeList(List<UnidadDeAprendizaje> unidadDeAprendizajeList) {
         this.unidadDeAprendizajeList = unidadDeAprendizajeList;
-    }
-
-    public Resultado getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(Resultado resultado) {
-        this.resultado = resultado;
     }
 
     public ArrayList<String> getSelectedUAsID() {
