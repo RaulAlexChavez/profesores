@@ -5,10 +5,12 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+>
     <h:head>
         <title>Consulta genneral de profesores</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -33,48 +35,34 @@ and open the template in the editor.
             <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
         </p:megaMenu>
         <div>
-            <p:dataTable class="tabla" var="profe" value="#{consultasProfesorUI.consultaProfesoresTodos()}">
+            <p:dataTable class="tabla" var="profe" value="#{consultasProfesorUI.profesores}" allowUnsorting="false" sortMode="single"
+                         widgetVar="tablaProfesores"
+                         emptyMessage="No se han encontrado resultados."
+                         filteredValue="#{consultasProfesorUI.filterProfesores}"
+                         globalFilterOnly="false">
                 <f:facet name="header">
                 Lista profesores
                 </f:facet>
-                <p:column>
-                    <f:facet name="header">
-                        ID
-                    </f:facet>
+                <p:column headerText="ID" sortBy="#{profe.idprofesor}">
                     #{profe.idprofesor}
                 </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Nombre
-                    </f:facet>
-                    #{profe.nombre}
+                <p:column headerText="Nombre" sortBy="#{profe.nombre}">
+                    <p:outputLabel value="#{profe.nombre}" />
                 </p:column>
-                <p:column>
-                   <f:facet name="header">
-                       Apellidos
-                    </f:facet>
-                    #{profe.apellido}
+                <p:column headerText="Apellidos" sortBy="#{profe.apellido}">
+                    <p:outputLabel value="#{profe.apellido}" />
                 </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        RFC
-                    </f:facet>
-                    #{profe.rfc}
+                <p:column headerText="RFC" sortBy="#{profe.rfc}">
+                    <p:outputLabel value="#{profe.rfc}" />
                 </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Unidades de aprendizaje
-                    </f:facet>
+                <p:column headerText="Unidades de aprendizaje">
                     <p:dataList value="#{profe.unidadDeAprendizajeList}" var="ua" itemType="disc">
-                        <!--<p:link href="consultaUA.xhtml">[#{ua.idunidadDeAprendizaje}] #{ua.nombreUA}</p:link>-->
                         <p:outputLabel>[#{ua.idunidadDeAprendizaje}] #{ua.nombreUA}</p:outputLabel>
                     </p:dataList>
                 </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Acciones
-                    </f:facet>
+                <p:column headerText="Acciones">
                     <h:form>
+                        <h:commandButton action="#{modProfe_UI.modificarProfesor(profe.idprofesor)}" value ="Editar" style="margin-left: 30px; margin-top: 30px;" />
                         <h:commandButton action="#{bajaProfe_UI.borrarConfirmacion(profe.idprofesor)}" value ="Borrar" style="margin-left: 30px; margin-top: 30px;" />
                     </h:form>
                 </p:column>

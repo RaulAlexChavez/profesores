@@ -14,6 +14,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import mx.alesco.entidad.Profesor;
@@ -37,6 +38,9 @@ public class AltasProfesorBeanUI implements Serializable{
     private UnidadDeAprendizaje ua;
     private ArrayList<String> selectedUAsID;
     private List<UnidadDeAprendizaje> unidadDeAprendizajeList;
+    
+    @ManagedProperty(value="#{consultasProfesorUI}")
+    private ConsultasProfesoresBeanUI consultasProfeUI;
     
     public AltasProfesorBeanUI() {
         profeHelper = new AltasProfesorHelper();
@@ -71,6 +75,7 @@ public class AltasProfesorBeanUI implements Serializable{
             resetValues();
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, ("El/la profesor(a) " + nombre + " se ha dado de alta correctamente."), "");
             context.addMessage("general-altasProfesores", message);
+            consultasProfeUI.actualizarConsultas();
         }
         else{
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No se ha podido dar la alta.", "Es posible que el ID ya esté ocupado.");
@@ -204,4 +209,12 @@ public class AltasProfesorBeanUI implements Serializable{
         this.selectedUAsID = selectedUAsID;
     }
 
+    public ConsultasProfesoresBeanUI getConsultasProfeUI() {
+        return consultasProfeUI;
+    }
+
+    public void setConsultasProfeUI(ConsultasProfesoresBeanUI consultasProfeUI) {
+        this.consultasProfeUI = consultasProfeUI;
+    }
+   
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import mx.alesco.entidad.Profesor;
@@ -32,6 +33,9 @@ public class BajasProfesorBeanUI implements Serializable{
     private int idUA;
     private UnidadDeAprendizaje ua;
     private List<UnidadDeAprendizaje> unidadDeAprendizajeList;
+    
+    @ManagedProperty(value="#{consultasProfesorUI}")
+    private ConsultasProfesoresBeanUI consultasProfeUI;
     
     public enum Resultado {
         None,
@@ -72,6 +76,7 @@ public class BajasProfesorBeanUI implements Serializable{
         if(success) {
             resultado = Resultado.Success;
             resetValues();
+            consultasProfeUI.actualizarConsultas();
             return "consultaProfesores.xhtml";
         }
         else{
@@ -188,7 +193,13 @@ public class BajasProfesorBeanUI implements Serializable{
     public void setResultado(Resultado resultado) {
         this.resultado = resultado;
     }
-    
-    
+
+    public ConsultasProfesoresBeanUI getConsultasProfeUI() {
+        return consultasProfeUI;
+    }
+
+    public void setConsultasProfeUI(ConsultasProfesoresBeanUI consultasProfeUI) {
+        this.consultasProfeUI = consultasProfeUI;
+    }
 
 }
