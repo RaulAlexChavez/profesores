@@ -23,13 +23,31 @@ import mx.alesco.helper.ConsultasUAHelper;
 @SessionScoped
 public class ConsultasUABeanUI implements Serializable{
     private ConsultasUAHelper uaHelper;
+    private List<UnidadDeAprendizaje> unidadesDeAprendizaje;
+    
+    @PostConstruct
+    private void init(){
+        actualizarConsultas();
+    }
     
     public ConsultasUABeanUI() {
         uaHelper = new ConsultasUAHelper();
     }
     
+    public void actualizarConsultas() {
+        unidadesDeAprendizaje = consultaUATodas();
+    }
+    
     public List<UnidadDeAprendizaje> consultaUATodas() {
         return uaHelper.consultaUATodos();
+    }
+
+    public List<UnidadDeAprendizaje> getUnidadesDeAprendizaje() {
+        return unidadesDeAprendizaje;
+    }
+
+    public void setUnidadesDeAprendizaje(List<UnidadDeAprendizaje> unidadesDeAprendizaje) {
+        this.unidadesDeAprendizaje = unidadesDeAprendizaje;
     }
     
 }

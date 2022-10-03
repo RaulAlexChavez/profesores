@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import mx.alesco.entidad.UnidadDeAprendizaje;
@@ -30,6 +31,10 @@ public class AltasUABeanUI implements Serializable{
     private int ht;
     private int hl;
     
+    @ManagedProperty(value="#{consultasUA_UI}")
+    private ConsultasUABeanUI consultaUAUI;
+    
+    
     public enum Resultado {
         None,
         Success,
@@ -48,6 +53,7 @@ public class AltasUABeanUI implements Serializable{
         if(success) {
             resultado = Resultado.Success;
             resetValues();
+            consultaUAUI.actualizarConsultas();
         }
         else{
             resultado = Resultado.Error;
@@ -127,4 +133,12 @@ public class AltasUABeanUI implements Serializable{
         this.idUA = idUA;
     }
 
+    public ConsultasUABeanUI getConsultaUAUI() {
+        return consultaUAUI;
+    }
+
+    public void setConsultaUAUI(ConsultasUABeanUI consultaUAUI) {
+        this.consultaUAUI = consultaUAUI;
+    }
+    
 }

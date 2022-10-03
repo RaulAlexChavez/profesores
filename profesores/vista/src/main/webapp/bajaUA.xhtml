@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>¿Seguro que desea dar la baja?</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .form-group{
+                margin: auto;
+                background-color: gray;
+                width: 66%;
+                align-items: center;
+                padding-left: auto;
+                padding-right: auto;
+                text-align: center;
+                align-content: center
+                 
+            }
+            .logo{
+                width: 20%;
+                margin-left: auto;
+                margin-right: auto;     
+            }
+            .alta{
+                width: 50%;
+                margin: auto;
+                align-content: center;
+            }
+            .panel-body{
+                width: 80%;
+                margin: auto;
+                background-color: grey;
+                border-radius: 15px;
+                                   
+            }
+            .form-control{
+                margin-left: auto;
+                margin-top: 5px;
+                    
+            }
+            .menuitem{
+                margin-left: 30px
+            }
+            .ui-icon-home{
+                font-size: 32px;
+            }
+            .success{
+                background-color: green
+            }
+            .error{
+                background-color: red;
+            }
+            .invisible{
+                visibility: hidden;
+            }
+        </style>
+    </h:head>
+    <h:body style="background-color: green">
+        <p:megaMenu>
+            <p:menuitem url="index.xhtml" value="Inicio"/>
+            <p:menuitem value="Alta de profesores" url="altasProfesores.xhtml"/>
+            <p:menuitem value="Consulta general de profesores" url="consultaProfesores.xhtml"/>
+            <p:menuitem value="Alta de Unidad de Aprendizaje" url="altasUA.xhtml"/>
+            <p:menuitem value="Consulta general de Unidades de aprendizaje" url="consultaUA.xhtml"/>
+        </p:megaMenu>
+        <div>
+            <h:form>
+                <div class="alta">
+                    <div class="panel-header" style="text-align: center">
+                        <h1> Baja de Unidades de Aprendizaje </h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class=" form-group">
+                            <p:inputNumber class ="form-control" placeholder ="Id de UA:" autocomplete="false" value="#{bajaUA_UI.idUA}" disabled="true"/>
+                            <p:inputText class ="form-control" placeholder="Nombre: " value="#{bajaUA_UI.nombreUA}" disabled="true"/>
+                            <p:inputText class ="form-control" placeholder="Apellidos: " value="#{bajaUA_UI.horasClase}" disabled="true"/>
+                            <p:inputText class ="form-control" placeholder="RFC: " value="#{bajaUA_UI.horasTaller}" disabled="true"/>
+                            <p:inputNumber class ="form-control" placeholder="ID Materia: " value="#{bajaUA_UI.horasLab}" disabled="true"/>
+                            <!--<p:selectOneListbox style="margin-left: auto; margin-right: auto; margin-top: 10px">
+                                <f:selectItem itemLabel="Seleccione una Unidad de Aprendizaje" itemValue=""/>
+                                <f:selectItem itemLabel="TEST"/>
+                            </p:selectOneListbox>-->
+                        </div>
+                        <h:commandButton action="#{bajaUA_UI.bajaUA()}" value ="Borrar" style="margin-left: 30px; margin-top: 30px;" />
+                        <h:commandButton action="consultaUA.xhtml" value ="Cancelar" style="margin-left: 30px; margin-top: 30px;" />
+                    </div>
+                </div>
+                <div class="#{bajaUA_UI.resultadoClass()}">
+                    <p:outputLabel class="#{bajaUA_UI.resultadoClass()}">#{bajaUA_UI.resultadoText()}</p:outputLabel>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>

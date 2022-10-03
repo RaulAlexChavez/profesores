@@ -25,9 +25,9 @@ public class test {
         consultaUA(11293);*/
         
         // ALTA PROFESOR //
-        consultaProfesor(9898);
+        /*consultaProfesor(9898);
         altaProfesor();
-        consultaProfesor(9898);
+        consultaProfesor(9898);*/
         
         // CONSULTA PROFES Y UAS //
         /*consultaProfesores();
@@ -43,6 +43,8 @@ public class test {
         /*consultaProfesor(9898);
         modificarProfesor();
         consultaProfesor(9898);*/
+        
+        borrarUA(4444);
     }
     
     public static void consultaProfesor(int id) {
@@ -172,6 +174,16 @@ public class test {
         }
         else {
             System.out.println("Modificación de Profesor fallida! :C");
+        }
+    }
+    
+    public static void borrarUA(int id) {
+        UnidadDeAprendizaje ua = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().consultaUA.porID(id);
+        boolean success = ServiceFacadeLocator.getInstanceFacadeUnidadDeAprendizaje().borrarUnidadDeAprendizaje(ua);
+        if(success){
+            System.out.println("Se borró UA");
+        } else {
+            System.out.println("No se borró UA");
         }
     }
     
