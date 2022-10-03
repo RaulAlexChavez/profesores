@@ -60,6 +60,12 @@ public class AltasProfesorBeanUI implements Serializable{
             return "altasProfesores.xhtml";
         }
         
+        if(selectedUAsID.size() == 0){
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Se tiene que seleccionar al menos 1 Unidad de APrendizaje.", "");
+            context.addMessage("general-altasProfesores", message);
+            return "altasProfesores.xhtml";
+        }
+        
         unidadDeAprendizajeList = new ArrayList<>();
         ConsultasUAHelper uaHelper = new ConsultasUAHelper();
         for(String ua_id_s : selectedUAsID){
