@@ -9,3 +9,4 @@ profesores/persistencia/src/main/resources/hibernate.cfg.xml
 *.lst
 profesores/entidad/target/entidad-1.0-SNAPSHOT.jar
 profesores/vista/target/vista-1.0-SNAPSHOT.war
+/profesores/entidad/target/
