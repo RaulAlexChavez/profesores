@@ -61,6 +61,7 @@ public class BajasProfesorBeanUI implements Serializable{
         nombre = profe.getNombre();
         apellido = profe.getApellido();
         rfc = profe.getRfc();
+        unidadDeAprendizajeList = profe.getUnidadDeAprendizajeList();
     }
     
     public String bajaProfe() {
